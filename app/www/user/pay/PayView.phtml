@@ -1,0 +1,19 @@
+<!-- Affichage du template lié à la vue -->
+<table class="generic-table meal-list">
+            <caption>Règlement de votre commande</caption>
+            <tbody>
+                    <fieldset>
+                            <legend>Coordonnées bancaires</legend>
+                            <form method="POST" action="https://Bureau/22/index.html/reservation">
+                                <label for="nrcb">Numéro de carte bancaire :</label><br> 
+                                <input id="nrcb" name="cb" type="text" maxlength="16"><br>
+                                <label for="expiration">Date d'expiration :</label><br> 
+                                <input id="expiration" name="expiration" type="text" maxlength="8"><br>
+                                <label for="ccv">Code de vérification :</label><br> 
+                                <input type="text" name="ccv" value="" /><br> 
+                                <input type="submit" name="payer" value="Payer"/> <input type="submit" name="abandonner" value="Abandonner"/>
+                            </form>
+                            </form>
+                    </fieldset>
+            </tbody>
+        </table>

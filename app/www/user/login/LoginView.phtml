@@ -1,0 +1,25 @@
+<!-- Affichage du template lié à la vue -->
+<table class="generic-table meal-list">
+            <tbody>
+                <nav class="user-interface">
+                    <ul class="link-list"></ul>
+                    <a class="button button-primary" href="<?= $requestUrl ?>/user/signin">Créer un compte</a></ul> 
+                    <ul class="layout-right-bottom">
+                        <a class="button button-primary" href="<?= $requestUrl ?>/user/login">Connexion</a></ul>
+                </nav>
+                        <h2>Connection avec un compte d'utilisateur</h2>
+                    <fieldset>
+                        <legend>Informations d'authentification</legend>
+                        <form action="" method="POST">
+                                <label for="">E-mail :</label><br>
+                                <input id=" passeword" name="email" type="text" value="<?= $email ?>"><br>
+                            <label for="">Mot de passe :</label><br>
+                            <input id="passeword" name="password" type="password"><br>
+                            <hr>
+                            <button class="connexion" type="submit" name="submitButton">Connexion</button>
+                            <button class="annulation" type="submit" name="cxlButton">Annuler</button>
+                        </form>
+                    </fieldset>
+               
+            </tbody>
+        </table>

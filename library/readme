@@ -1,0 +1,88 @@
+# Projet Restaurant
+
+## Partie Admin 
+
+  -> ajouter d'autres utilisateurs (Client / admin)
+  -> supprimer utilisateur
+  -> modifier utilisateur
+  -> connexion / déconnexion
+  -> entrer un menu (meal)
+    ## Formulaire 
+      -> input **Nom du menu**
+      -> input **Photo**
+      -> input **Description**
+      -> input **QuantityinStock**
+      -> Input **BuyPrice**
+      -> Input **SalePrice**
+      -> Bouton *Créer le menu* (**type submit**)
+  -> supprimer un menu
+  -> modifier un menu
+  -> suivre les commandes en cours (lister les commandes)
+  -> valider la commande 
+  -> suivre les réservations (lister les réservations)
+ 
+
+## Partie Client
+  -> Peut s'inscrire 
+    ## Formulaire Créer son compte Client (user)
+      -> input **Prénom**
+      -> input **Nom**
+      -> input **Mail**
+      -> input **Password**
+      -> input **BirthDate**
+      -> Input **address**
+      -> input **Ville**
+      -> input **Zipcode**
+      -> Input **Country**
+      -> Input **Tel**
+      -> Bouton *Créer son compte* (**type submit**)
+  -> consulter ses commandes 
+  -> connexion / déconnexion
+  -> gérer son compte 
+  -> fait la réservation d'une table + nombre de places (selon disponibilité)
+  -> ajouter/modifier/supprimer des produits à son panier (stockage => $_SESSION['produits'] + utilisation de l'ajax)
+  -> validation de la commander + paiement
+
+
+## Partie Interface Client
+
+  * Navigation fixe
+    -> Panier
+    -> Bouton créer son compte
+    -> Bouton se connecter
+
+  * Main
+    -> Slider
+    -> Bouton de redirection pour la page de réservation 
+    -> la liste des plats + prix + photo + petite description 
+    -> détails d'un plat 
+
+  * Footer
+    -> Informations diverses
+
+
+
+
+
+
+### Commandes
+
+
+  * Afficher la liste des commandes du client dans son espace utilisateur
+      -> verification si l'utilisateur est connecté
+      -> Récupérer la liste de SES commandes 
+      -> les afficher
+  * Affiche la liste de toutes les commandes de tous les clients => coté Administrateur
+      -> verification si l'utilisateur est connecté
+      -> verifier si c'est un admin
+        # Si non Ciao Bella
+      -> Récupérer la liste des commandes 
+      -> les afficher
+
+### Réservation
+
+
+  * Afficher la liste des réservations coté espace client
+  * Affiche la liste de toutes réservations  + afficher nombre de place disponible => coté salarié
+
+### Pages ou vue à faire

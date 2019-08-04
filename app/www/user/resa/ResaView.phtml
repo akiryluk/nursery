@@ -1,0 +1,40 @@
+<!-- Affichage du template lié à la vue -->
+<table class="generic-table meal-list">
+            <tbody>
+                <fieldset>
+                    <legend>
+                        <h2>Formulaire de réservation </h2>
+                    </legend>
+                    <form action="" method="POST" value="reservation>
+            <label for="">Nom :</label><br>
+            <input name=" lastName" type="text" placeholder="Nom"><br>
+                        <label for="">Prénom :</label><br>
+                        <input name="firstName" type="text" placeholder="Prenom"><br>
+                        <label for="">Date de réservation :</label><br>
+                        <input type="date" max="2025-07-17" min="2019-07-17" name="the_date"><br>
+                        <label for="heure">L'heure :</label><br>
+                        <select name="heure" id="">
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                        </select>
+                        <select name="minutes" id="">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select><br>
+                        <label for="tentacles">Nr de couverts :</label><br>
+                        <input type="number" name="paxnumber" min="1" max="10"><br>
+                        <label for="">Message:</label><br>
+                        <textarea name="msg" id="msg" cols="20" rows="10" placeholder="Message"></textarea><br>
+                        <button class="btn btn-primary" type="submit" name="submitButton">Réserver</button>
+                        <!-- <button class="cxl" type="submit" name="cxlButton">Annuler</button> -->
+                        <button type="button" class="btn btn-danger">Annuler</button>
+                    </form>
+                </fieldset>
+            </tbody>
+        </table>
