@@ -16,8 +16,11 @@ class Database
 			$configuration->get('database', 'user'),
 			$configuration->get('database', 'password')
 		);
+		// set the PDO error mode to exception
+		$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		$this->pdo->exec('SET NAMES UTF8');
+		echo "Connected successfully";
 	}
 
 	public function executeSql($sql, array $values = array())
