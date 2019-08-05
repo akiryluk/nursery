@@ -24,7 +24,7 @@ class UserModel
         string $birthdate, 
         string $address, 
         string $city, 
-        int $zipcode, 
+        string $zipcode, 
         string $phone, 
         string $email, 
         string $password, 
@@ -66,10 +66,12 @@ class UserModel
     }
     public function createUser()
     {
+
+        
         $db = new Database();
         $db -> executeSql(
-            "INSERT INTO user (FirstName, LastName) values (?,?)", 
-            [$this-> prenom, $this->nom]
+            "INSERT INTO user (FirstName, LastName, Email) values (?,?,?)", 
+            [$this-> prenom, $this->nom, $this->email]
         );
     }
     public static function getAllUsers()
