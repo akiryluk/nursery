@@ -14,19 +14,33 @@ class SigninController
             }
         }
     }
+    public function validateFields (array $formFields)
+    {
+        $mandatoryFields=['lastName', 'firstName', 'email','password'];
+        
+        for($i = 0 ; $i< count($mandatoryFields); $i++)
+        {
+            $isEmpty = empty($formFields[$mandatoryFields[$i]]);
+            if($isEmpty){
+                return false;
+            }
+        }
+
+        return true;
+    }
     public function httpPostMethod(Http $http, array $formFields)
     {
-        // if(isset($formFields['nom']))
-        // {
+         if($this->validateFields($formFields))
+         {
             $user = new UserModel($formFields['lastName'], $formFields['firstName'], 
-            "", $formFields['adresse'], $formFields['ville'],
-            $formFields['cp'], $formFields['tel'], $formFields['email'],
+            "", $formFields['address'], $formFields['city'],
+            $formFields['zipCode'], $formFields['phone'], $formFields['email'],
             $formFields['password'],"France", false);
 
             $user->createUser();
             $http->redirectTo('/user/login');
 
-        // }
+        }
     }
     // public function addPost()  
     // {
