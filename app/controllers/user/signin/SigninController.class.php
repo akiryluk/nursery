@@ -13,6 +13,7 @@ class SigninController
                 $http->redirectTo('/user');
             }
         }
+        return [ '_form' => new SigninForm() ];
     }
     public function validateFields (array $formFields)
     {
@@ -30,6 +31,7 @@ class SigninController
     }
     public function httpPostMethod(Http $http, array $formFields)
     {
+
          if($this->validateFields($formFields))
          {
             $user = new UserModel($formFields['lastName'], $formFields['firstName'], 
@@ -39,26 +41,14 @@ class SigninController
 
             $user->createUser();
             $http->redirectTo('/user/login');
+        }else{
+            // Réaffichage du formulaire avec un message d'erreur.
+            $form = new SigninForm();
+            $form->bind($formFields);
+            $form->setErrorMessage("Erreur de validation. Au moins un des champs obligatoires n*est pas saisie.");
 
+			return [ '_form' => $form ];
         }
     }
-    // public function addPost()  
-    // {
-    //     try {
-    //         $cnx = new PDO('mysql:host=localhost;dbname=data_restaurant;charset=utf8', "root", "troiswa");
-    //     } catch (PDOExeption $e) {
-    //         echo $e->getMessage();
-    //     }
-  
-    //     $stmt = $cnx->prepare('INSERT INTO post (prenom, nom, email, password, birthday, adresse) VALUES (?,?,?,?,?)');
-    //     $stmt->execute([
-    //         $this->title,
-    //         $this->content,
-    //         $this->picture, 
-    //         $this->category_id,
-    //         $this->created_at
-    //     ]);
 
-    //     $cnx = null;
-    // }
 }

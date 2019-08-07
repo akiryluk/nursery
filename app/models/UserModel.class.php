@@ -67,7 +67,6 @@ class UserModel
     public function createUser()
     {
 
-        
         $db = new Database();
         $db -> executeSql(
             "INSERT INTO user (FirstName, LastName, Email, Password, Address, 
