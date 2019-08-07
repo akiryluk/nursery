@@ -15,10 +15,15 @@ class SigninController
         }
         return [ '_form' => new SigninForm() ];
     }
+
+    /**
+     * Validation des champs obligatoires avec un message d'erreur 
+     * cote back (au cas ou JS sera desactive côté client).
+     */
     public function validateFields (array $formFields)
     {
         $mandatoryFields=['lastName', 'firstName', 'email','password'];
-        
+       
         for($i = 0 ; $i< count($mandatoryFields); $i++)
         {
             $isEmpty = empty($formFields[$mandatoryFields[$i]]);
