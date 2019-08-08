@@ -39,10 +39,11 @@ class SigninController
 
          if($this->validateFields($formFields))
          {
+            $passwordEncrypted = (!empty( $formFields['password'])) ? password_hash( $formFields['password'], PASSWORD_BCRYPT):null;
             $user = new UserModel($formFields['lastName'], $formFields['firstName'], 
             "", $formFields['address'], $formFields['city'],
             $formFields['zipCode'], $formFields['phone'], $formFields['email'],
-            $formFields['password'],"France", false);
+            $passwordEncrypted,"France", false);
 
             $user->createUser();
             $http->redirectTo('/user/login');

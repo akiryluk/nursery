@@ -3,8 +3,8 @@
 class UserModel
 {
     private $id;
-    private $nom;
-    private $prenom;
+    private $lastName;
+    private $firstName;
     private $birthdate;
     private $address;
     private $city;
@@ -19,8 +19,8 @@ class UserModel
 
   
     public function __construct(
-        string $nom, 
-        string $prenom, 
+        string $lastName, 
+        string $firstName, 
         string $birthdate, 
         string $address, 
         string $city, 
@@ -39,15 +39,15 @@ class UserModel
         {
             $this->id = $id;
         }
-        $this->nom = $nom;
-        $this->prenom = $prenom;
+        $this->lastName = $lastName;
+        $this->firstName = $firstName;
         $this->birthdate = $birthdate;
         $this->address = $address;
         $this->city = $city;
         $this->zipcode = $zipcode;
         $this->phone = $phone;
         $this->email = $email;
-        $this->password = password_hash($password, PASSWORD_BCRYPT);
+        $this->password = $password;
         $this ->country = $country;
         $this ->admin = $admin;
 
@@ -101,8 +101,8 @@ class UserModel
     {
         $db = new Database();
         $db -> executeSql(
-            "UPDATE user SET LastLoginTimestamp = ?", 
-            [date("Y-m-d H:i:s")]
+            "UPDATE user SET LastLoginTimestamp = ? WHERE id = ?", 
+            [date("Y-m-d H:i:s"), $this->id]
         );
     }
 
@@ -110,7 +110,12 @@ class UserModel
     {
         $db = new Database();
         $result = $db->queryOne("SELECT * FROM user WHERE Email = ?", [$email]);
-        $user = new UserModel($result['FirstName'],$result['LastName'],$result['Email'],$result['Password'],$result['BirthDate'],$result['Address'],$result['City'],$result['ZipCode'],$result['Phone'],$result['Admin'],$result['Country'],$result['CreationTimestamp'],$result['LastLoginTimestamp'],$result['Id']);
+        $user = new UserModel($result['LastName'],$result['FirstName'],
+                                $result['BirthDate'],$result['Address'],
+                                $result['City'],$result['ZipCode'],$result['Phone'],
+                                $result['Email'],$result['Password'],
+                                $result['Country'],$result['Admin'],$result['CreationTimestamp'],
+                                $result['LastLoginTimestamp'],$result['Id']);
         return $user;
     }
 
@@ -133,4 +138,284 @@ class UserModel
     //     }
     //     return $users;
     // }
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */ 
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of lastName
+     */ 
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set the value of lastName
+     *
+     * @return  self
+     */ 
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of firstName
+     */ 
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set the value of firstName
+     *
+     * @return  self
+     */ 
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of birthdate
+     */ 
+    public function getBirthdate()
+    {
+        return $this->birthdate;
+    }
+
+    /**
+     * Set the value of birthdate
+     *
+     * @return  self
+     */ 
+    public function setBirthdate($birthdate)
+    {
+        $this->birthdate = $birthdate;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of address
+     */ 
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * Set the value of address
+     *
+     * @return  self
+     */ 
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of city
+     */ 
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set the value of city
+     *
+     * @return  self
+     */ 
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of zipcode
+     */ 
+    public function getZipcode()
+    {
+        return $this->zipcode;
+    }
+
+    /**
+     * Set the value of zipcode
+     *
+     * @return  self
+     */ 
+    public function setZipcode($zipcode)
+    {
+        $this->zipcode = $zipcode;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of phone
+     */ 
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set the value of phone
+     *
+     * @return  self
+     */ 
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of email
+     */ 
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set the value of email
+     *
+     * @return  self
+     */ 
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of password
+     */ 
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set the value of password
+     *
+     * @return  self
+     */ 
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of country
+     */ 
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * Set the value of country
+     *
+     * @return  self
+     */ 
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of created_at
+     */ 
+    public function getCreated_at()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * Set the value of created_at
+     *
+     * @return  self
+     */ 
+    public function setCreated_at($created_at)
+    {
+        $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of lastLoginTimaestamp
+     */ 
+    public function getLastLoginTimaestamp()
+    {
+        return $this->lastLoginTimaestamp;
+    }
+
+    /**
+     * Set the value of lastLoginTimaestamp
+     *
+     * @return  self
+     */ 
+    public function setLastLoginTimaestamp($lastLoginTimaestamp)
+    {
+        $this->lastLoginTimaestamp = $lastLoginTimaestamp;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of admin
+     */ 
+    public function getAdmin()
+    {
+        return $this->admin;
+    }
+
+    /**
+     * Set the value of admin
+     *
+     * @return  self
+     */ 
+    public function setAdmin($admin)
+    {
+        $this->admin = $admin;
+
+        return $this;
+    }
 }

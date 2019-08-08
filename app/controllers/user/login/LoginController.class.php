@@ -22,7 +22,8 @@ class LoginController
         {
             $user = UserModel::getUserByEmail($formFields['email']);
             if($user)
-            {
+            { 
+                //compare if client password === db password
                 if(password_verify($formFields['password'], $user->getPassword()))
                 {
                     // ouvrir la session et stocker dedans :
