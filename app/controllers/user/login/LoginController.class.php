@@ -14,9 +14,9 @@ class LoginController
             }
         }
     }
+    
     public function httpPostMethod(Http $http, array $formFields)
     {
-        $session = new Session();
 
         if(isset($formFields['email']))
         {
@@ -26,6 +26,9 @@ class LoginController
                 //compare if client password === db password
                 if(password_verify($formFields['password'], $user->getPassword()))
                 {
+                    //Demarrer une nouvelle session car l'utilisateur est connu
+                    $session = new Session();
+                    
                     // ouvrir la session et stocker dedans :
                     // logged = true
                     // l'id de l'utilisateur
@@ -51,4 +54,6 @@ class LoginController
   
          
     }
+   
 }
+

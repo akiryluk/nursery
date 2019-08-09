@@ -5,7 +5,7 @@
             <ul class="link-list"></ul>
             <a class="button button-primary" href="<?= $requestUrl ?>/user/signin">Créer un compte</a></ul>
             <ul class="layout-right-bottom">
-                <a class="button button-primary" href="<?= $requestUrl ?>/user/login">Connexion</a></ul>
+                <a class="button button-primary" href="<?= $requestUrl ?>/user/login">Se connecter</a></ul>
         </nav>
         <h2>Connection avec un compte d'utilisateur</h2>
         <form action="<?= $requestUrl ?>/user/login" method="POST">
@@ -16,7 +16,7 @@
                 <label for="password">Mot de passe :</label><br>
                 <input id="password" name="password" type="password"><br>
                 <hr>
-                <button class="connection" type="submit" name="submitButton">Connexion</button>
-                <button class="cancel" type="submit" name="cxlButton">Annuler</button>
+                <button class="connection" name="submitButton" type="submit">Connexion</button>
+                <button class="cancel" name="cxlButton" type="submit">Annuler</button>
         </fieldset>
         </form>

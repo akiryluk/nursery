@@ -71,7 +71,7 @@ class UserModel
         $db -> executeSql(
             "INSERT INTO user (FirstName, LastName, Email, Password, Address, 
             City, ZipCode, Country, Phone, CreationTimestamp) values (?,?,?,?,?,?,?,?,?,?)", 
-            [$this-> prenom, $this->nom, $this->email, $this->password, $this->address,
+            [$this->firstName, $this->lastName, $this->email, $this->password, $this->address,
             $this->city, $this->zipcode, $this->country, $this->phone, $this->created_at]
         );
     }

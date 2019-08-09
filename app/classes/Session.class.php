@@ -41,6 +41,15 @@ class Session{
         }
 		return false;
     }
+
+    public function getFullName()
+    {
+        if(array_key_exists ('firstName', $_SESSION) == true && array_key_exists ('lastName', $_SESSION) == true)
+        {
+            return ($_SESSION['firstName'])." ".($_SESSION['lastName']);
+        }
+        return "";
+    }
     
 
     public function isAdmin()

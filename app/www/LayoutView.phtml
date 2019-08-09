@@ -53,9 +53,13 @@
             <a class="btn btn-primary" href="#" type="button">Admin user</a>
             <a class="btn btn-primary" href="#" type="submit">Réserver</a>
             <a class="btn btn-primary" href="#" type="reset">Commander</a>
-            <a href="#" class="btn btn-warning pull-right">Se déconnecter</a>
+            <?php if($userSession->isAuthenticated() == true): ?>
+                <li class="layout-right">
+                        <span class="welcome">Bonjour <strong><?= $userSession->getFullName() ?></strong> !</span>
+                        <a class="button button-primary" href="<?= $requestUrl ?>/user/logout">Déconnexion</a>
+                </li>
+            <?php endif; ?>
         </ul>
-
     </nav>
 
     <main>
