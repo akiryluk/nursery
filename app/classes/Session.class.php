@@ -60,4 +60,17 @@ class Session{
         }
         return false;
     }
+    /*
+    * Get Current User Identifier. Return Null if anonymous user.
+    *
+    */
+
+    public function getCurrentUserId()
+    {
+        if(array_key_exists ('id', $_SESSION) == true)
+        {
+            return ($_SESSION['id']);
+        }
+        return null;
+    }
 }

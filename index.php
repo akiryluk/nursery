@@ -26,6 +26,10 @@ require_once 'library/FrontController.class.php';
 require_once 'library/MicroKernel.class.php';
 require_once 'library/Http.class.php';
 require_once 'library/InterceptingFilter.interface.php';
+/*add SecuredController to secure the app from an anonymous user
+*(can't go further without being logged in).
+*/
+require_once 'library/SecuredController.class.php';
 
 
 $microKernel = new MicroKernel();
