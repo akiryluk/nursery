@@ -39,8 +39,7 @@
     <header>
         <h1>
             <a href="<?= $requestUrl ?>">
-                <img src="<?= $wwwUrl ?>/images/logo.gif" height="63" width="57" alt="3WA Restaurant">Restaurant - Made
-                In America !
+                <img src="<?= $wwwUrl ?>" height="63" width="57" alt="">Little dev nursery!
             </a>
         </h1>
     </header>
@@ -55,7 +54,8 @@
             <a class="btn btn-primary" href="#" type="reset">Commander</a>
             <?php if($userSession->isAuthenticated() == true): ?>
                 <li class="layout-right">
-                        <span class="welcome">Bonjour <strong><?= $userSession->getFullName() ?></strong> !</span>
+                    <!-- show user profile(with lastName and FirstName), modify my profile -->
+                       <a href="<?= $requestUrl ?>/user/profile"> <span class="welcome">Bonjour <strong><?= $userSession->getFullName() ?></strong> !</span></a>
                         <a class="button button-primary" href="<?= $requestUrl ?>/user/logout">Déconnexion</a>
                 </li>
             <?php endif; ?>
@@ -73,7 +73,7 @@
             <li><img src="<?= $wwwUrl ?>/images/payment/mastercard.png" alt="MasterCard"></li>
             <li><img src="<?= $wwwUrl ?>/images/payment/paypal.png" alt="PayPal"></li>
         </ul>
-        <small>Réalisé avec <i class="fa fa-heart"></i>&nbsp; par les élèves de la 3W Academy</small>
+        <small>Réalisé avec <i class="fa fa-heart"></i>&nbsp; par Ania</small>
     </footer>
 
     <!-- Code principal JavaScript de l'application -->

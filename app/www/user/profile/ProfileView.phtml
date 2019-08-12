@@ -1,0 +1,31 @@
+<!-- Affichage du template lié à la vue -->
+<h1>Editer votre profil</h1>
+
+<form class="generic-form" action="<?= $requestUrl ?>/user/profile" method="POST">
+    <aside class="error-message hidden">
+        <h3><i class="fa fa-warning"></i> Il y a <span id="total-error-count">1</span> erreur(s) dans le formulaire !</h3>
+        <p><?= $errorMessage ?></p>
+    </aside>
+    <fieldset>
+        <legend>
+            <h2>Coordonnées personelles</h2>
+        </legend>
+            <label for="lastName">Nom :</label><br>
+            <input id="lastName" type="text" name="lastName" data-required data-name="Nom" value="<?= $currentUser->getLastName() ?>"/>
+            <br>
+            <label for="firstName">Prénom :</label><br>
+            <input id="firstName" type="text" name="firstName" data-required data-name="Prénom" value="<?= $currentUser->getFirstName() ?>"/><br>
+            <label for="address">Adresse :</label><br>
+            <input name="address" id="address" value="<?= $currentUser->getAddress() ?>"/><br>
+            <label for="city">Ville :</label><br>
+            <input name="city" id="city" value="<?= $currentUser->getCity() ?>" /><br>
+            <label for="zipCode">Code Postal :</label><br>
+            <input id="zipCode" name="zipCode" type="text" maxlength="5" value="<?= $currentUser->getZipCode() ?>"/><br>
+            <label for="phone">Téléphone :</label><br>
+            <input id="phone" name="phone" type="text" maxlength="10" data-type="number" value="<?= $currentUser->getPhone() ?>"/><br>
+            <label for="email">E-mail :</label><br>
+            <input id="email" type="text" name="email" data-required data-name="E-mail" value="<?= $currentUser->getEmail() ?>"/><br>
+            <button class="button-primary" type="submit" name="submitButton">Sauvegarder</button>
+            <button class="button-cancel" type="reset" name="resetButton">Annuler</button>
+    </fieldset>    
+</form>

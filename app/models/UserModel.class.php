@@ -48,8 +48,8 @@ class UserModel
         $this->phone = $phone;
         $this->email = $email;
         $this->password = $password;
-        $this ->country = $country;
-        $this ->admin = $admin;
+        $this->country = $country;
+        $this->admin = $admin;
 
         if($created_at)
         {
@@ -75,6 +75,20 @@ class UserModel
             $this->city, $this->zipcode, $this->country, $this->phone, $this->created_at]
         );
     }
+
+    public static function saveUser($id, $lastName, $firstName, $address, $city,
+    $zipcode, $phone, $email)
+    {
+        $db = new Database();
+        $db -> executeSql(
+            "UPDATE user SET LastName = ?, FirstName = ?, Address = ?, City = ?, ZipCode = ?, Phone = ?,
+            Email =? WHERE id=?", 
+            [$lastName, $firstName, $address, $city,
+            $zipcode, $phone, $email, $id]
+        );
+    }
+
+
     public static function getAllUsers()
     {
         $db = new Database();
@@ -92,7 +106,8 @@ class UserModel
     {
         $db = new Database();
         $result = $db->queryOne("SELECT * FROM user WHERE Id = ?", [$id]);
-        $user = new UserModel($user['FirstName'],$user['LastName'],$user['Email'],$user['Password'],$user['BirthDate'],$user['Address'],$user['City'],$user['ZipCode'],$user['Phone'],$user['Admin'],$user['Country'],$user['CreationTimestamp'],$user['LastLoginTimestamp'],$user['Id']);
+        $user = new UserModel($result['LastName'],$result['FirstName'],$result['BirthDate'],$result['Address'],$result['City'],$result['ZipCode'],
+        $result['Phone'],$result['Email'],$result['Password'],$result['Country'],$result['Admin'],$result['CreationTimestamp'],$result['LastLoginTimestamp'],$result['Id']);
         return $user;
     }
 
