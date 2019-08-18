@@ -7,36 +7,36 @@ FROM `family`
 
 CREATE TABLE person 
              ( 
-                          person_id        BIGINT NOT NULL auto_increment, 
-                          first_name        varchar(255), 
-                          last_name         varchar(255), 
-                          street            VARCHAR(255), 
-                          city             VARCHAR(255), 
-                          zip_code         VARCHAR(255), 
-                          country          VARCHAR(255), 
-                          birthday           DATE, 
-                          birth_place      VARCHAR(255), 
-                          email              varchar(50),
-                          phone               varchar(20),
-                          nationality          VARCHAR(255), 
-                          job_title          VARCHAR(255),
-                          company_name          VARCHAR(255), 
-                          security_number          INT(11), 
+                          person_id                 BIGINT NOT NULL auto_increment, 
+                          first_name                VARCHAR(255), 
+                          last_name                 VARCHAR(255), 
+                          street                    VARCHAR(255), 
+                          city                      VARCHAR(255), 
+                          zip_code                  VARCHAR(255), 
+                          country                   VARCHAR(255), 
+                          birthday                  DATE, 
+                          birth_place               VARCHAR(255), 
+                          email                     VARCHAR(50),
+                          phone                     VARCHAR(20),
+                          nationality               VARCHAR(255), 
+                          job_title                 VARCHAR(255),
+                          company_name              VARCHAR(255), 
+                          security_number           INT(11), 
                           PRIMARY KEY (person_id) 
              ) 
              engine=innodb;
 
 CREATE TABLE family 
              ( 
-                          family_id        BIGINT NOT NULL auto_increment, 
-                          /*create_dat         DATETIME(6), exemplae d'une colonne avec une date et son type*/ 
-                          mother_id       BIGINT, 
-                          father_id       BIGINT, 
+                        family_id              BIGINT NOT NULL auto_increment, 
+                        /*create_dat           DATETIME(6), exemplae d'une colonne avec une date et son type*/ 
+                        mother_id              BIGINT, 
+                        father_id              BIGINT, 
                         emergency_one_id       BIGINT, 
                         emergency_two_id       BIGINT, 
-                        guide_one_id       BIGINT, 
-                        guide_two_id       BIGINT, 
-                          PRIMARY KEY (family_id) 
+                        guide_one_id           BIGINT, 
+                        guide_two_id           BIGINT, 
+                        PRIMARY KEY (family_id) 
              ) 
              engine=innodb;
 
@@ -46,3 +46,62 @@ alter table family add constraint FK_family_person_emergency_one foreign key (em
 alter table family add constraint FK_family_person_emergency_two foreign key (emergency_two_id) references person (person_id);
 alter table family add constraint FK_family_person_guide_one foreign key (guide_one_id) references person (person_id);
 alter table family add constraint FK_family_person_guide_two foreign key (guide_two_id) references person (person_id);
+
+CREATE TABLE file 
+             ( 
+                        file_id                       BIGINT NOT NULL auto_increment, 
+                        content                       BLOB, 
+                        file_name                     VARCHAR(50),   
+                        PRIMARY KEY (file_id) 
+             ) 
+             engine=innodb;
+
+CREATE TABLE kid 
+             ( 
+                        kid_id                        BIGINT NOT NULL auto_increment, 
+                        info_kid_id                   BIGINT, 
+                        family_id                     BIGINT,  
+                        rank_sibling                  INTEGER,
+                        file_id                       BIGINT, 
+                        PRIMARY KEY (kid_id) 
+             ) 
+             engine=innodb;
+
+alter table kid add constraint FK_kid_person foreign key (info_kid_id) references person (person_id);
+alter table kid add constraint FK_kid_family foreign key (family_id) references family (family_id);
+alter table kid add constraint FK_kid_file foreign key (file_id) references file (file_id);
+
+
+CREATE TABLE nursery_request 
+             ( 
+                        nursery_request_id            BIGINT NOT NULL auto_increment, 
+                        reference_number              INTEGER, 
+                        request_date                  DATETIME(6), 
+                        entry_date                    DATE, 
+                        family_id                     BIGINT, 
+                        kid_id                        BIGINT, 
+                        caf_number                    INTEGER,
+                        status_req                    VARCHAR(20),
+                        file_id                       BIGINT, 
+                        PRIMARY KEY (nursery_request_id) 
+             ) 
+             engine=innodb;
+
+alter table nursery_request add constraint FK_nursery_request_family foreign key (family_id) references family (family_id);
+alter table nursery_request add constraint FK_nursery_request_kid foreign key (kid_id) references kid (kid_id);
+alter table nursery_request add constraint FK_nursery_request_file foreign key (file_id) references file (file_id);
+
+CREATE TABLE work_place
+             ( 
+                        work_place_id                 BIGINT NOT NULL auto_increment, 
+                        name                          VARCHAR(50),  
+                        street                        VARCHAR(255), 
+                        city                          VARCHAR(255), 
+                        zip_code                      VARCHAR(255), 
+                        country                       VARCHAR(255), 
+                        director_id                   BIGINT, 
+                        PRIMARY KEY (work_place_id) 
+             ) 
+             engine=innodb;
+
+alter table work_place add constraint FK_work_place_person foreign key (director_id) references person (person_id);
