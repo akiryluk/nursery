@@ -83,6 +83,7 @@ class ExampleModel{
 
     //=======================================
     // GETTER/SETTER METHODS
+    // CTRL + ALT + D ==> AUTO GENERATE GETTER SETTER
     //=======================================
     
 
