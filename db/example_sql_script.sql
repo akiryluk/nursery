@@ -29,7 +29,7 @@ CREATE TABLE person
 CREATE TABLE family 
              ( 
                         family_id              BIGINT NOT NULL auto_increment, 
-                        /*create_dat           DATETIME(6), exemplae d'une colonne avec une date et son type*/ 
+                        /*create_at           DATETIME(6), exemplae d'une colonne avec une date et son type*/ 
                         mother_id              BIGINT, 
                         father_id              BIGINT, 
                         emergency_one_id       BIGINT, 
@@ -105,3 +105,35 @@ CREATE TABLE work_place
              engine=innodb;
 
 alter table work_place add constraint FK_work_place_person foreign key (director_id) references person (person_id);
+
+CREATE TABLE health
+             ( 
+                        health_id                     BIGINT NOT NULL auto_increment, 
+                        kid_id                        BIGINT,   
+                        doctor_pers_id                BIGINT, 
+                        file_id                       BIGINT, 
+                        born_on_time                  tinyint(1) DEFAULT 0, 
+                        birth_health_issues           tinyint(1) DEFAULT 0, 
+                        is_allergy                    tinyint(1) DEFAULT 0,
+                        allergy_detail                VARCHAR(3500),
+                        is_diet                       tinyint(1) DEFAULT 0,
+                        diet_detail                   VARCHAR(3500),
+                        is_lose_consciousness         tinyint(1) DEFAULT 0,
+                        lose_detail                   VARCHAR(3500),
+                        is_convulsions                tinyint(1) DEFAULT 0,
+                        is_blidding_nose              tinyint(1) DEFAULT 0,
+                        is_special_medecine           tinyint(1) DEFAULT 0,
+                        medcine_detail                VARCHAR(3500),
+                        is_fever_medecine             tinyint(1) DEFAULT 0,
+                        weight                        INTEGER,
+                        is_hospital_emergency         tinyint(1) DEFAULT 0,
+                        hospital_name                 VARCHAR(60),
+                        create_at                     DATETIME(6),
+                        PRIMARY KEY (health_id) 
+             ) 
+             engine=innodb;
+
+alter table health add constraint FK_health_kid foreign key (kid_id) references kid (kid_id);
+/* après reference c'est la PK de la table à joindre*/
+alter table health add constraint FK_health_person foreign key (doctor_pers_id) references person (person_id);
+alter table health add constraint FK_health_file foreign key (file_id) references file (file_id);
