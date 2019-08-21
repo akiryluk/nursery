@@ -78,7 +78,6 @@ CREATE TABLE nursery_request
                         reference_number              INTEGER, 
                         request_date                  DATETIME(6), 
                         entry_date                    DATE, 
-                        family_id                     BIGINT, 
                         kid_id                        BIGINT, 
                         caf_number                    INTEGER,
                         status_req                    VARCHAR(20),
@@ -87,7 +86,6 @@ CREATE TABLE nursery_request
              ) 
              engine=innodb;
 
-alter table nursery_request add constraint FK_nursery_request_family foreign key (family_id) references family (family_id);
 alter table nursery_request add constraint FK_nursery_request_kid foreign key (kid_id) references kid (kid_id);
 alter table nursery_request add constraint FK_nursery_request_file foreign key (file_id) references file (file_id);
 
