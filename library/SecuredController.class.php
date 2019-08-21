@@ -33,7 +33,7 @@ abstract class SecuredController
 	}
 
 	/**
-	 * Ensure User is authenticated and is granted for accesing at this resource.
+	 * Ensure User is authenticated and is granted for accessing at this resource.
 	 * Delegate Http Get request processing at Child class. 
 	 */
 	abstract protected function doHttpGetMethod(Http $http, array $queryFields);
