@@ -16,7 +16,7 @@ class ExampleModel{
     private $created_at;//datetime now = date("Y-m-d H:i:s");   ==> mysql ==> datetime
     private $lastLoginTimaestamp;//timestamp 1970  ==> mysql ==> datetime
     private $admin;//bool  ==> mysql ==> tinybit
-    private $fkexample_id;//long ==> mysql ==> long Foreign Key
+    private $fkexampleId;//long ==> mysql ==> long Foreign Key
 
     //=======================================
     // DEFAULT CONSTRUCTOR
