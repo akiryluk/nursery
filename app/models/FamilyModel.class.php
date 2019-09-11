@@ -25,7 +25,7 @@ class FamilyModel
             values (?,?,?,?,?,?)", 
             [$this->motherId, $this->fatherId,
             $this->emergencyOneId, $this->emergencyTwoId,
-            $this->guideOneId, $this->guideTwoId,]
+            $this->guideOneId, $this->guideTwoId]
         );
     }
     public static function readAllFamily(){
@@ -101,8 +101,6 @@ class FamilyModel
 
     /**
      * Getter for MotherId
-     *
-     * @return [type]
      */
     public function getMotherId():long
     {
@@ -111,9 +109,6 @@ class FamilyModel
 
     /**
      * Setter for MotherId
-     * @var [type] motherId
-     *
-
      */
     public function setMotherId(long $motherId)
     {
@@ -124,8 +119,6 @@ class FamilyModel
 
     /**
      * Getter for FatherId
-     *
-     * @return [type]
      */
     public function getFatherId():long
     {
@@ -134,9 +127,6 @@ class FamilyModel
 
     /**
      * Setter for FatherId
-     * @var [type] fatherId
-     *
-
      */
     public function setFatherId(long $fatherId)
     {
@@ -144,11 +134,8 @@ class FamilyModel
 
     }
 
-
     /**
      * Getter for EmergencyOneId
-     *
-     * @return [type]
      */
     public function getEmergencyOneId():long
     {
@@ -157,9 +144,6 @@ class FamilyModel
 
     /**
      * Setter for EmergencyOneId
-     * @var [type] emergencyOneId
-     *
-
      */
     public function setEmergencyOneId(long $emergencyOneId)
     {
@@ -170,8 +154,7 @@ class FamilyModel
 
     /**
      * Getter for EmergencyTwoId
-     *
-     * @return [type]
+     *]
      */
     public function getEmergencyTwoId():long
     {
@@ -180,9 +163,6 @@ class FamilyModel
 
     /**
      * Setter for EmergencyTwoId
-     * @var [type] emergencyTwoId
-     *
-
      */
     public function setEmergencyTwoId(long $emergencyTwoId)
     {
@@ -190,11 +170,9 @@ class FamilyModel
 
     }
 
-
     /**
      * Getter for GuideOneId
      *
-     * @return [type]
      */
     public function getGuideOneId():long
     {
@@ -203,7 +181,6 @@ class FamilyModel
 
     /**
      * Setter for GuideOneId
-     * @var [type] guideOneId
      *
      */
     public function setGuideOneId(long $guideOneId)
@@ -212,11 +189,9 @@ class FamilyModel
 
     }
 
-
     /**
      * Getter for GuideTwoId
      *
-     * @return [type]
      */
     public function getGuideTwoId():long
     {
@@ -225,7 +200,6 @@ class FamilyModel
 
     /**
      * Setter for GuideTwoId
-     * @var [type] guideTwoId
      *
      */
     public function setGuideTwoId(long $guideTwoId)

@@ -33,7 +33,7 @@ class PersonModel
             $this->city, $this->zipCode, $this->country, 
             $this->birthDate, $this->birthPlace,
             $this->email,$this->phone, $this->nationality, $this->jobTitle,
-            $this->companyName, $this->securityNumber ]
+            $this->companyName, $this->securityNumber]
         );
     }
     public static function readAllPerson()
@@ -123,14 +123,12 @@ class PersonModel
     /**
      * Getter for FirstName
      *
-     * @return [type]
      */
     public function getFirstName():string{
         return $this->firstName;
     }
     /**
      * Setter for FirstName
-     * @var [type] firstName
      *
      * 
      */
@@ -140,14 +138,12 @@ class PersonModel
     /**
      * Getter for LastName
      *
-     * @return [type]
      */
     public function getLastName():string{
         return $this->lastName;
     }
     /**
      * Setter for LastName
-     * @var [type] lastName
      *
      * 
      */
@@ -157,14 +153,12 @@ class PersonModel
     /**
      * Getter for Street
      *
-     * @return [type]
      */
     public function getStreet():string{
         return $this->street;
     }
     /**
      * Setter for Street
-     * @var [type] street
      *
      * 
      */
@@ -174,14 +168,12 @@ class PersonModel
     /**
      * Getter for City
      *
-     * @return [type]
      */
     public function getCity():string{
         return $this->city;
     }
     /**
      * Setter for City
-     * @var [type] city
      *
      * 
      */
@@ -191,127 +183,103 @@ class PersonModel
     /**
      * Getter for ZipCode
      *
-     * @return [type]
      */
     public function getZipCode():string{
         return $this->zipCode;
     }
     /**
      * Setter for ZipCode
-     * @var [type] zipCode
      *
      * 
      */
-    public function setZipCode($zipCode){
+    public function setZipCode(string $zipCode){
         $this->zipCode = $zipCode;
     }
     /**
      * Getter for Country
      *
-     * @return [type]
      */
-    public function getCountry()
-    {
+    public function getCountry():string{
         return $this->country;
     }
     /**
      * Setter for Country
-     * @var [type] country
      *
      * 
      */
-    public function setCountry($country)
-    {
+    public function setCountry(string $country){
         $this->country = $country;
     }
     /**
      * Getter for Phone
      *
-     * @return [type]
      */
-    public function getPhone()
-    {
+    public function getPhone():string{
         return $this->phone;
     }
     /**
      * Setter for Phone
-     * @var [type] phone
      *
      * 
      */
-    public function setPhone($phone)
-    {
+    public function setPhone(string $phone){
         $this->phone = $phone;
     }
    
     /**
      * Getter for BirthDate
      *
-     * @return [type]
      */
-    public function getBirthDate()
-    {
+    public function getBirthDate():date{
         return $this->birthDate;
     }
     /**
      * Setter for BirthDate
-     * @var [type] birthDate
      *
      * 
      */
-    public function setBirthDate($birthDate)
-    {
+    public function setBirthDate(date $birthDate){
         $this->birthDate = $birthDate;
     }
     /**
      * Getter for BirthPlace
      *
-     * @return [type]
      */
-    public function getBirthPlace()
-    {
+    public function getBirthPlace():string{
         return $this->birthPlace;
     }
     /**
      * Setter for BirthPlace
-     * @var [type] birthPlace
      *
      * 
      */
-    public function setBirthPlace($birthPlace)
-    {
+    public function setBirthPlace(string $birthPlace){
         $this->birthPlace = $birthPlace;
     }
     /**
      * Getter for Email
      *
-     * @return [type]
      */
-    public function getEmail()
-    {
+    public function getEmail():string{
         return $this->email;
     }
     /**
      * Setter for Email
-     * @var [type] email
      *
      * 
      */
-    public function setEmail($email)
-    {
+    public function setEmail(string $email){
         $this->email = $email;
     }
     /**
      * Getter for Nationality
      *
-     * @return [type]
      */
-    public function getNationality(): string{
+    public function getNationality():string{
         return $this->nationality;
     }
     /**
      * Setter for Nationality
-     * @var [type] nationality
      *
      * 
      */
@@ -321,37 +289,29 @@ class PersonModel
     /**
      * Getter for SecurityNumber
      *
-     * @return [type]
      */
-    public function getSecurityNumber()
-    {
+    public function getSecurityNumber():integer{
         return $this->securityNumber;
     }
     /**
      * Setter for SecurityNumber
-     * @var [type] securityNumber
      *
      * 
      */
-    public function setSecurityNumber($securityNumber)
-    {
+    public function setSecurityNumber(integer $securityNumber){
         $this->securityNumber = $securityNumber;
     }
     /**
      * Get the value of accepted
      */ 
-    public function getAccepted()
-    {
+    public function getAccepted():bool{
         return $this->accepted;
     }
     /**
      * Set the value of accepted
      *
-     * @return  self
      */ 
-    public function setAccepted($accepted)
-    {
+    public function setAccepted(bool $accepted){
         $this->accepted = $accepted;
-        return $this;
     }
 }

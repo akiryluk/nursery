@@ -119,7 +119,7 @@ CREATE TABLE health
                         is_lose_consciousness         tinyint(1) DEFAULT 0,
                         lose_detail                   VARCHAR(3500),
                         is_convulsions                tinyint(1) DEFAULT 0,
-                        is_blidding_nose              tinyint(1) DEFAULT 0,
+                        is_bleeding_nose              tinyint(1) DEFAULT 0,
                         is_special_medecine           tinyint(1) DEFAULT 0,
                         medcine_detail                VARCHAR(3500),
                         is_fever_medecine             tinyint(1) DEFAULT 0,
