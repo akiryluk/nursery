@@ -1,6 +1,6 @@
 <?php
 
-class RequestListController extends SecuredController
+class RequestEditController extends SecuredController
 {
     //Get a Nursery Request identified by 12
     //localhost/nursery/index.php/user/nurseryRequest?id=12

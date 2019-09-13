@@ -1,0 +1,23 @@
+<!-- Affichage du template lié à la vue -->
+<h1>Editer votre demande d'inscription</h1>
+
+<form class="generic-form" action="<?= $requestUrl ?>/user/nursery/requestEdit" method="POST">
+    <aside class="error-message hidden">
+        <h3><i class="fa fa-warning"></i> Il y a <span id="total-error-count">1</span> erreur(s) dans le formulaire !</h3>
+        <p><?= $errorMessage ?></p>
+    </aside>
+    <fieldset>
+        <legend>
+            <h2>Info de bases</h2>
+        </legend>
+            <label for="id">Id :</label><br>
+            <input id="id" type="text" name="id" value="<?= $nurseryRequest->getId() ?>"/>
+
+            <label for="entryDate">Date :</label><br>
+            <input id="entryDate" type="text" name="entryDate" data-required data-name="Date d'entrée" value="<?= $nurseryRequest->getEntryDate() ?>"/>
+            <br>
+
+            <button class="button-primary" type="submit" name="submitButton">Sauvegarder</button>
+            <button class="button-cancel" type="reset" name="resetButton">Annuler</button>
+    </fieldset>    
+</form>

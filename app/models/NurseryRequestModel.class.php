@@ -85,14 +85,18 @@ class NurseryRequestModel
         $singleResultSql = $db->queryOne("SELECT * FROM nursery_request WHERE nursery_request_id = ?", [$id]);
 
         $nurseryRequest = new NurseryRequestModel();
-        $nurseryRequest->setId($singleResultSql['id']);
+        $nurseryRequest->setId($singleResultSql['nursery_request_id']);
         $nurseryRequest->setReferenceNumber($singleResultSql['reference_number']);
         $nurseryRequest->setRequestDate($singleResultSql['request_date']);
         $nurseryRequest->setEntryDate($singleResultSql['entry_date']);
-        $nurseryRequest->setKidId($singleResultSql['kid_id']);
+        if(!empty($singleResultSql['kid_id'])){
+            $nurseryRequest->setKidId($singleResultSql['kid_id']);
+        }
         $nurseryRequest->setCafNumber($singleResultSql['caf_number']);
         $nurseryRequest->setStatusReq($singleResultSql['status_req']);
-        $nurseryRequest->setFileId($singleResultSql['file_id']);
+        if(!empty($singleResultSql['file_id'])){
+            $nurseryRequest->setFileId($singleResultSql['file_id']);
+        }
 
         return $nurseryRequest;
     }
