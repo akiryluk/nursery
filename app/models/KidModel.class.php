@@ -123,7 +123,7 @@ class KidModel
     /**
      * Get the value of rankSibling
      */ 
-    public function getRankSibling():integer{
+    public function getRankSibling():int{
         return $this->rankSibling;
     }
 
@@ -131,7 +131,7 @@ class KidModel
      * Set the value of rankSibling
      *
      */ 
-    public function setRankSibling(integer $rankSibling){
+    public function setRankSibling(int $rankSibling){
         $this->rankSibling = $rankSibling;
     }
 

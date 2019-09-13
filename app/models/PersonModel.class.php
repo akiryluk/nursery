@@ -290,7 +290,7 @@ class PersonModel
      * Getter for SecurityNumber
      *
      */
-    public function getSecurityNumber():integer{
+    public function getSecurityNumber():int{
         return $this->securityNumber;
     }
     /**
@@ -298,7 +298,7 @@ class PersonModel
      *
      * 
      */
-    public function setSecurityNumber(integer $securityNumber){
+    public function setSecurityNumber(int $securityNumber){
         $this->securityNumber = $securityNumber;
     }
     /**

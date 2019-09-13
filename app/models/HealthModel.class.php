@@ -409,14 +409,14 @@ $aIsFeverMedecine, $aWeight, $aIsHospitalEmergency, $aHospitalName, $aCreatedAt)
     /**
      * Get the value of weight
      */ 
-    public function getWeight():integer{
+    public function getWeight():int{
         return $this->weight;
     }
 
     /**
      * Set the value of weight
      */ 
-    public function setWeight(integer $weight){
+    public function setWeight(int $weight){
         $this->weight = $weight;
     }
 
