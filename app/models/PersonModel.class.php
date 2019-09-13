@@ -110,14 +110,14 @@ class PersonModel
          /**
      * Get the value of id
      */ 
-    public function getId():long{
+    public function getId():int{
         return $this->id;
     }
     /**
      * Set the value of id
      *
      */ 
-    public function setId(long $id){
+    public function setId(int $id){
         $this->id = $id;
     }
     /**

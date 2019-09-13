@@ -163,7 +163,7 @@ $aIsFeverMedecine, $aWeight, $aIsHospitalEmergency, $aHospitalName, $aCreatedAt)
     /**
      * Get the value of id
      */ 
-    public function getId():long{
+    public function getId():int{
         return $this->id;
     }
 
@@ -171,49 +171,49 @@ $aIsFeverMedecine, $aWeight, $aIsHospitalEmergency, $aHospitalName, $aCreatedAt)
      * Set the value of id
      *
      */ 
-    public function setId(long $id){
+    public function setId(int $id){
         $this->id = $id;
     }
 
     /**
      * Get the value of kidId
      */ 
-    public function getKidId():long{
+    public function getKidId():int{
         return $this->kidId;
     }
 
     /**
      * Set the value of kidId
      */ 
-    public function setKidId(long $kidId){
+    public function setKidId(int $kidId){
         $this->kidId = $kidId;
     }
 
     /**
      * Get the value of doctorPersId
      */ 
-    public function getDoctorPersId():long{
+    public function getDoctorPersId():int{
         return $this->doctorPersId;
     }
 
     /**
      * Set the value of doctorPersId
      */ 
-    public function setDoctorPersId(long $doctorPersId){
+    public function setDoctorPersId(int $doctorPersId){
         $this->doctorPersId = $doctorPersId;
     }
 
     /**
      * Get the value of fileId
      */ 
-    public function getFileId():long{
+    public function getFileId():int{
         return $this->fileId;
     }
 
     /**
      * Set the value of fileId
      */ 
-    public function setFileId(long $fileId){
+    public function setFileId(int $fileId){
         $this->fileId = $fileId;
     }
 

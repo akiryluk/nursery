@@ -49,6 +49,37 @@ class NurseryRequestModel
         return $NurseryRequests;
     }
 
+    public static function readAllNurseryRequestByUserId($id){
+        $db = new Database();
+        //TODO AK: ADD user_id as foreign key into request_nursery table.
+        // And add WHERE clause with user_id=id into the following query
+        $resultSql = $db->query("SELECT * FROM nursery_request");
+        $nurseryRequests= [];
+        foreach($resultSql as $row){
+            $nurseryRequest = new NurseryRequestModel();
+            $nurseryRequest->setId((int)$row['nursery_request_id']);
+            $nurseryRequest->setReferenceNumber($row['reference_number']);
+            $nurseryRequest->setRequestDate($row['request_date']);
+            $nurseryRequest->setEntryDate($row['entry_date']);
+            $kidIdAsStr = $row['kid_id'];
+            if(!empty($kidIdAsStr)){
+                $nurseryRequest->setKidId((int)$row['kid_id']);
+            }
+            $nurseryRequest->setCafNumber($row['caf_number']);
+            $nurseryRequest->setStatusReq($row['status_req']);
+            if(!empty($row['file_id'])){
+                $nurseryRequest->setFileId((int)$row['file_id']);
+            }
+
+            /*j'ajoute au tableau examples la ligne example*/ 
+            array_push($nurseryRequests,$nurseryRequest);
+        }
+
+        return $nurseryRequests;
+    }
+
+    
+
     public static function readNurseryRequestById($id){
         $db = new Database();
         $singleResultSql = $db->queryOne("SELECT * FROM nursery_request WHERE nursery_request_id = ?", [$id]);
@@ -88,7 +119,7 @@ class NurseryRequestModel
     /**
      * Get the value of id
      */ 
-    public function getId():long{
+    public function getId():int{
         return $this->id;
     }
 
@@ -97,7 +128,7 @@ class NurseryRequestModel
      *
      * @return  self
      */ 
-    public function setId(long $id){
+    public function setId(int $id){
         $this->id = $id;    
     }
 
@@ -122,7 +153,7 @@ class NurseryRequestModel
     /**
      * Get the value of requestDate
      */ 
-    public function getRequestDate():date{
+    public function getRequestDate():string{
         return $this->requestDate;
     }
 
@@ -131,7 +162,7 @@ class NurseryRequestModel
      *
      * @return  self
      */ 
-    public function setRequestDate(date $requestDate){
+    public function setRequestDate(string $requestDate){
         $this->requestDate = $requestDate;
 
         
@@ -140,7 +171,7 @@ class NurseryRequestModel
     /**
      * Get the value of entryDate
      */ 
-    public function getEntryDate():date{
+    public function getEntryDate():string{
         return $this->entryDate;
     }
 
@@ -149,7 +180,7 @@ class NurseryRequestModel
      *
      * @return  self
      */ 
-    public function setEntryDate(date $entryDate){
+    public function setEntryDate(string $entryDate){
         $this->entryDate = $entryDate;
 
         
@@ -158,7 +189,7 @@ class NurseryRequestModel
     /**
      * Get the value of kidId
      */ 
-    public function getKidId():long{
+    public function getKidId():int{
         return $this->kidId;
     }
 
@@ -167,7 +198,7 @@ class NurseryRequestModel
      *
      * @return  self
      */ 
-    public function setKidId(long $kidId){
+    public function setKidId(int $kidId){
         $this->kidId = $kidId;
 
         
@@ -212,7 +243,7 @@ class NurseryRequestModel
     /**
      * Get the value of fileId
      */ 
-    public function getFileId():long{
+    public function getFileId():int{
         return $this->fileId;
     }
 
@@ -221,7 +252,7 @@ class NurseryRequestModel
      *
      * @return  self
      */ 
-    public function setFileId(long $fileId){
+    public function setFileId(int $fileId){
         $this->fileId = $fileId;
 
         

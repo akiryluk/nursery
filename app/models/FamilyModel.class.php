@@ -87,7 +87,7 @@ class FamilyModel
     /**
      * Get the value of id
      */ 
-    public function getId():long{
+    public function getId():int{
         return $this->id;
     }
 
@@ -95,7 +95,7 @@ class FamilyModel
      * Set the value of id
      *
      */ 
-    public function setId(long $id){
+    public function setId(int $id){
         $this->id = $id;
     }
 
@@ -110,7 +110,7 @@ class FamilyModel
     /**
      * Setter for MotherId
      */
-    public function setMotherId(long $motherId)
+    public function setMotherId(int $motherId)
     {
         $this->motherId = $motherId;
 
@@ -128,7 +128,7 @@ class FamilyModel
     /**
      * Setter for FatherId
      */
-    public function setFatherId(long $fatherId)
+    public function setFatherId(int $fatherId)
     {
         $this->fatherId = $fatherId;
 
@@ -145,7 +145,7 @@ class FamilyModel
     /**
      * Setter for EmergencyOneId
      */
-    public function setEmergencyOneId(long $emergencyOneId)
+    public function setEmergencyOneId(int $emergencyOneId)
     {
         $this->emergencyOneId = $emergencyOneId;
 
@@ -164,7 +164,7 @@ class FamilyModel
     /**
      * Setter for EmergencyTwoId
      */
-    public function setEmergencyTwoId(long $emergencyTwoId)
+    public function setEmergencyTwoId(int $emergencyTwoId)
     {
         $this->emergencyTwoId = $emergencyTwoId;
 
@@ -183,7 +183,7 @@ class FamilyModel
      * Setter for GuideOneId
      *
      */
-    public function setGuideOneId(long $guideOneId)
+    public function setGuideOneId(int $guideOneId)
     {
         $this->guideOneId = $guideOneId;
 
@@ -202,7 +202,7 @@ class FamilyModel
      * Setter for GuideTwoId
      *
      */
-    public function setGuideTwoId(long $guideTwoId)
+    public function setGuideTwoId(int $guideTwoId)
     {
         $this->guideTwoId = $guideTwoId;
 

@@ -82,7 +82,7 @@ class WorkPlaceModel
     /**
      * Get the value of id
      */ 
-    public function getId():long{
+    public function getId():int{
         return $this->id;
     }
 
@@ -90,7 +90,7 @@ class WorkPlaceModel
      * Set the value of id
      *
      */ 
-    public function setId(long $id){
+    public function setId(int $id){
         $this->id = $id;
     }
 
@@ -172,7 +172,7 @@ class WorkPlaceModel
     /**
      * Get the value of directorId
      */ 
-    public function getDirectorId():long{
+    public function getDirectorId():int{
         return $this->directorId;
     }
 
@@ -180,7 +180,7 @@ class WorkPlaceModel
      * Set the value of directorId
      *
      */ 
-    public function setDirectorId(long $directorId){
+    public function setDirectorId(int $directorId){
         $this->directorId = $directorId;
     }
 }

@@ -1,0 +1,27 @@
+<!-- Affichage du template lié à la vue -->
+<h1>Vos demandes d'inscription</h1>
+
+
+
+<form class="generic-form" action="<?= $requestUrl ?>/user/profile" method="POST">
+    <aside class="error-message hidden">
+        <h3><i class="fa fa-warning"></i> Il y a <span id="total-error-count">1</span> erreur(s) dans le formulaire !</h3>
+        <p><?= $errorMessage ?></p>
+    </aside>
+
+    <table>
+        <th>Numero Demande</th>
+        <th>Date</th>
+        <?php for ($i=0; $i < count($nurseryRequests) ; $i++):?> 
+            <tr>
+                <td>
+                    <a href="<?= $requestUrl ?>/user/nursery/requestEdit?id=<?= $nurseryRequests[$i]->getId() ?>">
+                        <?php echo $nurseryRequests[$i]->getId() ?>
+                    </a>
+                </td>
+                <td><?php echo $nurseryRequests[$i]->getRequestDate() ?></td>
+            </tr>
+        
+        <?php endfor?>
+    </table>   
+</form>

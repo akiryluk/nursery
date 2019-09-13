@@ -77,7 +77,7 @@ class KidModel
      * Get the value of id
      */ 
 
-    public function getId():long{
+    public function getId():int{
         return $this->id;
     }
 
@@ -85,7 +85,7 @@ class KidModel
      * Set the value of id
      *
      */ 
-    public function setId(long $id){
+    public function setId(int $id){
         $this->id = $id;
     }
     
@@ -93,7 +93,7 @@ class KidModel
     /**
      * Get the value of infoKidId
      */ 
-    public function getInfoKidId():long{
+    public function getInfoKidId():int{
         return $this->infoKidId;
     }
 
@@ -101,14 +101,14 @@ class KidModel
      * Set the value of infoKidId
      *
      */ 
-    public function setInfoKidId(long $infoKidId){
+    public function setInfoKidId(int $infoKidId){
         $this->infoKidId = $infoKidId;
     }
 
     /**
      * Get the value of familyId
      */ 
-    public function getFamilyId():long{
+    public function getFamilyId():int{
         return $this->familyId;
     }
 
@@ -116,7 +116,7 @@ class KidModel
      * Set the value of familyId
      *
      */ 
-    public function setFamilyId(long $familyId){
+    public function setFamilyId(int $familyId){
         $this->familyId = $familyId;
     }
 
@@ -138,7 +138,7 @@ class KidModel
     /**
      * Get the value of fileId
      */ 
-    public function getFileId():long{
+    public function getFileId():int{
         return $this->fileId;
     }
 
@@ -146,7 +146,7 @@ class KidModel
      * Set the value of fileId
      *
      */ 
-    public function setFileId(long $fileId){
+    public function setFileId(int $fileId){
         $this->fileId = $fileId;
     }
 }
