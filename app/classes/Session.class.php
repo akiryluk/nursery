@@ -54,7 +54,7 @@ class Session{
 
     public function isAdmin()
     {
-        if($_SESSION['admin']== true)
+        if(!empty($_SESSION['admin']) && $_SESSION['admin']== true)
         {
             return true;
         }

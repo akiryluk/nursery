@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>3WA Restaurant</title>
+    <title>Crèche les P'tits amis</title>
     <link rel="stylesheet" href="<?= $wwwUrl ?>/css/normalize-3.0.3.min.css">
     <link rel="stylesheet" href="<?= $wwwUrl ?>/css/font-awesome-4.3.0.min.css">
 
@@ -39,7 +39,7 @@
     <header>
         <h1>
             <a href="<?= $requestUrl ?>">
-                <img src="<?= $wwwUrl ?>" height="63" width="57" alt="">Little dev nursery!
+                <img src="<?= $wwwUrl ?>/images/logo.gif" height="63" width="57" alt="">Little dev nursery!
             </a>
         </h1>
     </header>
@@ -47,16 +47,34 @@
     <!-- Interface utilisateur -->
     <nav class="user-interface">
         <ul class="link-list">
-            <a class="btn btn-primary" href="#" role="button">Admin</a>
-            <a class="btn btn-primary" href="#" type="submit">Meal</a>
-            <a class="btn btn-primary" href="#" type="button">Admin user</a>
-            <a class="btn btn-primary" href="#" type="submit">Réserver</a>
-            <a class="btn btn-primary" href="#" type="reset">Commander</a>
-            <?php if($userSession->isAuthenticated() == true): ?>
+            <?php if($userSession->isAdmin() == true): ?>
+                <li>
+                    <a class="button button-primary" href="<?= $requestUrl ?>/admin">Admin</a>
+                    <a class="button button-primary" href="<?= $requestUrl ?>/admin/Meal">Meal</a>
+                    <a class="button button-primary" href="<?= $requestUrl ?>/admin/user">Admin user</a>
+                    <a class="button button-primary" href="<?= $requestUrl ?>/booking">Réserver</a>
+                    <a class="button button-primary" href="<?= $requestUrl ?>/order">Commander</a>
+                </li>
                 <li class="layout-right">
-                    <!-- show user profile(with lastName and FirstName), modify my profile -->
-                       <a href="<?= $requestUrl ?>/user/profile"> <span class="welcome">Bonjour <strong><?= $userSession->getFullName() ?></strong> !</span></a>
-                        <a class="button button-primary" href="<?= $requestUrl ?>/user/logout">Déconnexion</a>
+                    <p class="welcome">Bonjour <strong><?= $userSession->getFullName() ?></strong> !</p>
+                    <a class="button button-primary" href="<?= $requestUrl ?>/user/logout">Déconnexion</a>
+                </li>
+            <?php elseif($userSession->isAuthenticated() == true): ?>
+                <li>
+                    <a class="button button-primary" href="<?= $requestUrl ?>/booking">Réserver</a>
+                    <a class="button button-primary" href="<?= $requestUrl ?>/order">Commander</a>
+                </li>
+                <li class="layout-right">
+                <!-- show user profile(with lastName and FirstName), modify my profile -->
+                    <a href="<?= $requestUrl ?>/user/profile"><p class="welcome">Bonjour <strong><?= $userSession->getFullName() ?></strong> !</p></a>                                        
+                    <a class="button button-primary" href="<?= $requestUrl ?>/user/logout">Déconnexion</a>
+                </li>
+        <?php else: ?>
+                <li>
+                    <a class="button button-primary" href="<?= $requestUrl ?>/user/signin">Créer un compte</a>
+                </li>
+                <li class="layout-right">
+                    <a class="button button-primary" href="<?= $requestUrl ?>/user/login">Connexion</a>
                 </li>
             <?php endif; ?>
         </ul>

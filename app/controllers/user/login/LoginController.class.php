@@ -43,7 +43,7 @@ class LoginController
                     {
                         $http->redirectTo('/admin');
                     }else{
-                        $http->redirectTo('/user');
+                        $http->redirectTo('/');
                     }
 
                 }
