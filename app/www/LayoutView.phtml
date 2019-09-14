@@ -47,22 +47,15 @@
     <!-- Interface utilisateur -->
     <nav class="user-interface">
         <ul class="link-list">
-            <?php if($userSession->isAdmin() == true): ?>
+            <?php if($userSession->isAuthenticated() == true): ?>
                 <li>
-                    <a class="button button-primary" href="<?= $requestUrl ?>/admin">Admin</a>
-                    <a class="button button-primary" href="<?= $requestUrl ?>/admin/Meal">Meal</a>
-                    <a class="button button-primary" href="<?= $requestUrl ?>/admin/user">Admin user</a>
-                    <a class="button button-primary" href="<?= $requestUrl ?>/booking">Réserver</a>
-                    <a class="button button-primary" href="<?= $requestUrl ?>/order">Commander</a>
-                </li>
-                <li class="layout-right">
-                    <p class="welcome">Bonjour <strong><?= $userSession->getFullName() ?></strong> !</p>
-                    <a class="button button-primary" href="<?= $requestUrl ?>/user/logout">Déconnexion</a>
-                </li>
-            <?php elseif($userSession->isAuthenticated() == true): ?>
-                <li>
-                    <a class="button button-primary" href="<?= $requestUrl ?>/booking">Réserver</a>
-                    <a class="button button-primary" href="<?= $requestUrl ?>/order">Commander</a>
+                    <a class="button button-primary" href="<?= $requestUrl ?>/user/nursery/requestList">Mes demandes</a>
+                    <a class="button button-primary" href="<?= $requestUrl ?>/user/nursery/requestEdit">Inscrire mon enfant</a>
+                    <?php if($userSession->isAdmin() == true): ?>
+                        <li>
+                            <a class="button button-primary" href="<?= $requestUrl ?>/admin">Admin</a>
+                        </li>
+                    <?php endif; ?>
                 </li>
                 <li class="layout-right">
                 <!-- show user profile(with lastName and FirstName), modify my profile -->
