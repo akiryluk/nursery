@@ -20,7 +20,6 @@ class Database
 		$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		$this->pdo->exec('SET NAMES UTF8');
-		echo "Connected successfully";
 	}
 
 	public function executeSql($sql, array $values = array())

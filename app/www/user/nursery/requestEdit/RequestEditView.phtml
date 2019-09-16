@@ -1,5 +1,18 @@
 <!-- Affichage du template lié à la vue -->
-<h1>Editer votre demande d'inscription</h1>
+<?php
+$isNews = false;
+if(empty($nurseryRequest) || empty($nurseryRequest->getId())){
+    $isNews = true;
+}
+
+?>
+
+<?php if($isNews == true): ?>
+    <h1>Créer votre demande d'inscription</h1>
+<?php else: ?>
+    <h1>Editer votre demande d'inscription</h1>
+<?php endif; ?>
+
 
 <form class="generic-form" action="<?= $requestUrl ?>/user/nursery/requestEdit" method="POST">
     <aside class="error-message hidden">
@@ -11,13 +24,20 @@
             <h2>Info de bases</h2>
         </legend>
             <label for="id">Id :</label><br>
-            <input id="id" type="text" name="id" value="<?= $nurseryRequest->getId() ?>"/>
+            <input id="id" type="text" name="id" value="<?= $nurseryRequest->getId() ?>"/><br>
 
             <label for="entryDate">Date :</label><br>
             <input id="entryDate" type="text" name="entryDate" data-required data-name="Date d'entrée" value="<?= $nurseryRequest->getEntryDate() ?>"/>
             <br>
+            <label for="cafNumber">Caf number :</label><br>
+            <input id="id" type="text" name="cafNumber" value="<?= $nurseryRequest->getCafNumber() ?>"/><br>
+            <?php if($isNews == true): ?>
+                <button class="btn btn-primary" type="submit" name="submitButton">Créer</button>
+            <?php else: ?>
+                <button class="btn btn-primary" type="submit" name="submitButton">Sauvegarder</button>
+            <?php endif; ?>
 
-            <button class="button-primary" type="submit" name="submitButton">Sauvegarder</button>
-            <button class="button-cancel" type="reset" name="resetButton">Annuler</button>
+            
+            <button class="btn btn-secondary" type="reset" name="resetButton">Annuler</button>
     </fieldset>    
 </form>

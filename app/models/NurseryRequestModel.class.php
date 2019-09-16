@@ -18,13 +18,14 @@ class NurseryRequestModel
 
     public function createNurseryRequest(){
         $db = new Database();
-        $db -> executeSql(
+        $id = $db -> executeSql(
             "INSERT INTO nursery_request (reference_number, request_date,
             entry_date, kid_id, caf_number, status_req, file_id) 
             values (?,?,?,?,?,?,?)", 
             [$this->referenceNumber, $this->requestDate, $this->entryDate,
             $this->kidId, $this->cafNumber, $this->statusReq, $this->fileId]
         );
+        return $id;
     }
 
     public static function readAllNurseryRequest(){
@@ -121,9 +122,9 @@ class NurseryRequestModel
     }
 
     /**
-     * Get the value of id
+     * Get the value of id or Null 
      */ 
-    public function getId():int{
+    public function getId():?int{
         return $this->id;
     }
 
@@ -132,14 +133,14 @@ class NurseryRequestModel
      *
      * @return  self
      */ 
-    public function setId(int $id){
+    public function setId(?int $id){
         $this->id = $id;    
     }
 
     /**
      * Get the value of referenceNumber
      */ 
-    public function getReferenceNumber():int {
+    public function getReferenceNumber():?int{
         return $this->referenceNumber;
     }
 
@@ -148,7 +149,7 @@ class NurseryRequestModel
      *
      * @return  self
      */ 
-    public function setReferenceNumber(int $referenceNumber){
+    public function setReferenceNumber(?int $referenceNumber){
         $this->referenceNumber = $referenceNumber;
 
         
@@ -157,7 +158,7 @@ class NurseryRequestModel
     /**
      * Get the value of requestDate
      */ 
-    public function getRequestDate():string{
+    public function getRequestDate():?string{
         return $this->requestDate;
     }
 
@@ -166,7 +167,7 @@ class NurseryRequestModel
      *
      * @return  self
      */ 
-    public function setRequestDate(string $requestDate){
+    public function setRequestDate(?string $requestDate){
         $this->requestDate = $requestDate;
 
         
@@ -175,7 +176,7 @@ class NurseryRequestModel
     /**
      * Get the value of entryDate
      */ 
-    public function getEntryDate():string{
+    public function getEntryDate():?string{
         return $this->entryDate;
     }
 
@@ -184,16 +185,14 @@ class NurseryRequestModel
      *
      * @return  self
      */ 
-    public function setEntryDate(string $entryDate){
-        $this->entryDate = $entryDate;
-
-        
+    public function setEntryDate(?string $entryDate){
+        $this->entryDate = $entryDate;    
     }
 
     /**
      * Get the value of kidId
      */ 
-    public function getKidId():int{
+    public function getKidId():?int{
         return $this->kidId;
     }
 
@@ -202,7 +201,7 @@ class NurseryRequestModel
      *
      * @return  self
      */ 
-    public function setKidId(int $kidId){
+    public function setKidId(?int $kidId){
         $this->kidId = $kidId;
 
         
@@ -211,7 +210,7 @@ class NurseryRequestModel
     /**
      * Get the value of cafNumber
      */ 
-    public function getCafNumber():int{
+    public function getCafNumber():?int{
         return $this->cafNumber;
     }
 
@@ -220,7 +219,7 @@ class NurseryRequestModel
      *
      * @return  self
      */ 
-    public function setCafNumber(int $cafNumber){
+    public function setCafNumber(?int $cafNumber){
         $this->cafNumber = $cafNumber;
 
         
@@ -229,7 +228,7 @@ class NurseryRequestModel
     /**
      * Get the value of statusReq
      */ 
-    public function getStatusReq():string{
+    public function getStatusReq():?string{
         return $this->statusReq;
     }
 
@@ -238,7 +237,7 @@ class NurseryRequestModel
      *
      * @return  self
      */ 
-    public function setStatusReq(string $statusReq){
+    public function setStatusReq(?string $statusReq){
         $this->statusReq = $statusReq;
 
         
@@ -247,7 +246,7 @@ class NurseryRequestModel
     /**
      * Get the value of fileId
      */ 
-    public function getFileId():int{
+    public function getFileId():?int{
         return $this->fileId;
     }
 
@@ -256,7 +255,7 @@ class NurseryRequestModel
      *
      * @return  self
      */ 
-    public function setFileId(int $fileId){
+    public function setFileId(?int $fileId){
         $this->fileId = $fileId;
 
         
