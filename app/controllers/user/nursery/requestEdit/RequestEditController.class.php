@@ -12,30 +12,35 @@ class RequestEditController extends SecuredController
         //LECTURE/READ ONLY MODE (lecture)
 
         // Validation de la query string.
+        //ID is discriminator (permet to select one and only one line on my listing; ex gender(boy, girl))
         if(array_key_exists('id', $queryFields) == true)
         {
             if(ctype_digit($queryFields['id']) == true)
             {
 				// Récupération des informations sur nursery request.
                 $nurseryRequest = NurseryRequestModel::readNurseryRequestById($queryFields['id']);
-                
+                $infoMessage = null;
+                if(array_key_exists('statusCreation', $queryFields) == true){
+                    $infoMessage="Votre demande a bien été créée";
+                }
+                //TO DO AK TRY CATCH EXCEPTION IN ORDER TO SET AN ERROR MSG
                 return
                 [
                     'errorMessage' => null,
+                    'infoMessage' => $infoMessage,
                     'nurseryRequest'  => $nurseryRequest,
                 ];
                 
             }
-        }else{
-            //DISPLAY AN EMPTY CREATION FORM
-            $nurseryRequest = new NurseryRequestModel();
-            return
-            [
-                'errorMessage' => null,
-                'nurseryRequest'  => $nurseryRequest,
-            ];
-
         }
+
+        //DISPLAY AN EMPTY CREATION FORM
+        $nurseryRequest = new NurseryRequestModel();
+        return
+        [
+            'errorMessage' => null,
+            'nurseryRequest'  => $nurseryRequest,
+        ];
 
     }
    
@@ -60,6 +65,7 @@ class RequestEditController extends SecuredController
                 return
                 [
                     'errorMessage' => null,
+                    'infoMessage' => 'Votre modification a bien été enregistrée',
                     'nurseryRequest'  => $nurseryRequest,
                 ];
             }
@@ -79,7 +85,7 @@ class RequestEditController extends SecuredController
 
         //Persist into DB this new Nursery Request
         $newId = $requestModel->createNurseryRequest();
-        $http->redirectTo('user/nursery/requestEdit?id='.$newId);
+        $http->redirectTo('user/nursery/requestEdit?id='.$newId."&statusCreation=ok");
         
 	}
 }

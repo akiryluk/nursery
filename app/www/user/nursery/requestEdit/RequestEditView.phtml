@@ -1,43 +1,47 @@
 <!-- Affichage du template lié à la vue -->
 <?php
-$isNews = false;
+$isNew = false;
 if(empty($nurseryRequest) || empty($nurseryRequest->getId())){
-    $isNews = true;
+    $isNew = true;
 }
 
 ?>
 
-<?php if($isNews == true): ?>
-    <h1>Créer votre demande d'inscription</h1>
+<?php if($isNew == true): ?>
+<h1>Créer votre demande d'inscription</h1>
 <?php else: ?>
-    <h1>Editer votre demande d'inscription</h1>
+<h1>Editer votre demande d'inscription</h1>
 <?php endif; ?>
 
 
 <form class="generic-form" action="<?= $requestUrl ?>/user/nursery/requestEdit" method="POST">
     <aside class="error-message hidden">
-        <h3><i class="fa fa-warning"></i> Il y a <span id="total-error-count">1</span> erreur(s) dans le formulaire !</h3>
+        <h3><i class="fa fa-warning"></i> Il y a <span id="total-error-count">1</span> erreur(s) dans le formulaire !
+        </h3>
         <p><?= $errorMessage ?></p>
     </aside>
+    <?php if(!empty($infoMessage)): ?>
+    <div class="alert alert-success" role="alert">
+        <?= $infoMessage ?>
+    </div>
+    <?php endif; ?>
     <fieldset>
         <legend>
             <h2>Info de bases</h2>
         </legend>
-            <label for="id">Id :</label><br>
-            <input id="id" type="text" name="id" value="<?= $nurseryRequest->getId() ?>"/><br>
+        <input id="id" type="hidden" name="id" value="<?= $nurseryRequest->getId() ?>" /><br>
 
-            <label for="entryDate">Date :</label><br>
-            <input id="entryDate" type="text" name="entryDate" data-required data-name="Date d'entrée" value="<?= $nurseryRequest->getEntryDate() ?>"/>
-            <br>
-            <label for="cafNumber">Caf number :</label><br>
-            <input id="id" type="text" name="cafNumber" value="<?= $nurseryRequest->getCafNumber() ?>"/><br>
-            <?php if($isNews == true): ?>
-                <button class="btn btn-primary" type="submit" name="submitButton">Créer</button>
-            <?php else: ?>
-                <button class="btn btn-primary" type="submit" name="submitButton">Sauvegarder</button>
-            <?php endif; ?>
-
-            
-            <button class="btn btn-secondary" type="reset" name="resetButton">Annuler</button>
-    </fieldset>    
+        <label for="entryDate">Date :</label><br>
+        <input id="entryDate" type="text" name="entryDate" data-required data-name="Date d'entrée"
+            value="<?= $nurseryRequest->getEntryDate() ?>" />
+        <br>
+        <label for="cafNumber">Caf number :</label><br>
+        <input id="id" type="text" name="cafNumber" value="<?= $nurseryRequest->getCafNumber() ?>" /><br>
+        <?php if($isNew == true): ?>
+        <button class="btn btn-primary" type="submit" name="submitButton">Créer</button>
+        <?php else: ?>
+        <button class="btn btn-primary" type="submit" name="submitButton">Sauvegarder</button>
+        <?php endif; ?>
+        <button class="btn btn-secondary" type="reset" name="resetButton">Annuler</button>
+    </fieldset>
 </form>
