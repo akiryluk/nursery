@@ -19,9 +19,24 @@ class RequestEditController extends SecuredController
             {
 				// Récupération des informations sur nursery request.
                 $nurseryRequest = NurseryRequestModel::readNurseryRequestById($queryFields['id']);
+
+                //Fetch Kid information
+                $kidPerson = new PersonModel();
+                if(!empty($nurseryRequest->getKidId())){
+                    $kid = KidModel::readKidById($nurseryRequest->getKidId());
+                     //Fetch Person info based on kid id
+                    $kidPerson = PersonModel::readPersonById($kid->getInfoKidId());
+                }
+                
+
                 $infoMessage = null;
-                if(array_key_exists('statusCreation', $queryFields) == true){
-                    $infoMessage="Votre demande a bien été créée";
+                if(array_key_exists('statusAction', $queryFields) == true){
+                    if($queryFields['statusAction'] == 'created'){
+                        $infoMessage="Votre demande a bien été créée";
+                    }else{
+                        $infoMessage="Votre demande a bien été modifiée";
+                    }
+
                 }
                 //TO DO AK TRY CATCH EXCEPTION IN ORDER TO SET AN ERROR MSG
                 return
@@ -29,6 +44,7 @@ class RequestEditController extends SecuredController
                     'errorMessage' => null,
                     'infoMessage' => $infoMessage,
                     'nurseryRequest'  => $nurseryRequest,
+                    'kidPerson' => $kidPerson,
                 ];
                 
             }
@@ -36,10 +52,12 @@ class RequestEditController extends SecuredController
 
         //DISPLAY AN EMPTY CREATION FORM
         $nurseryRequest = new NurseryRequestModel();
+        $kidPerson = new PersonModel();
         return
         [
             'errorMessage' => null,
             'nurseryRequest'  => $nurseryRequest,
+            'kidPerson' => $kidPerson,
         ];
 
     }
@@ -58,34 +76,44 @@ class RequestEditController extends SecuredController
 
 				// Récupération des informations sur nursery request.
                 NurseryRequestModel::updateNurseryRequest($formFields['id'],$formFields['id'],$today, 
-                $formFields['entryDate'],null,$formFields['cafNumber'],"en cours",null);
+                $formFields['entryDate'],$formFields['kidId'],$formFields['cafNumber'],"en cours",null);
 
-                $nurseryRequest = NurseryRequestModel::readNurseryRequestById($formFields['id']);
-
-                return
-                [
-                    'errorMessage' => null,
-                    'infoMessage' => 'Votre modification a bien été enregistrée',
-                    'nurseryRequest'  => $nurseryRequest,
-                ];
+                $http->redirectTo('user/nursery/requestEdit?id='.$formFields['id']."&statusAction=updated");
             }
         }
 
         //CREATION MODE because ID is null/never been saved into db before
-        $requestModel = new NurseryRequestModel();
 
+        //=========================================================
+        //PERSIST FIRSTNAME, LASTNAME FIELD FOR KID/ PERSON
+        //=========================================================
+        $person = new PersonModel();
+        $person->setFirstName($formFields['firstName']);
+        $person->setLastName($formFields['lastName']);
+
+        $newPersonId = $person->createPerson();
+
+        $kid = new KidModel();
+        $kid->setInfoKidId($newPersonId);
+
+        $newKidId = $kid->createKid();
+
+        //=========================================================
+        //PERSIST FIELD FOR NURSERY REQUEST
+        //=========================================================
+        $requestModel = new NurseryRequestModel();
         
         $requestModel->setRequestDate($today);
         $requestModel->setEntryDate($formFields['entryDate']);
         $requestModel->setCafNumber($formFields['cafNumber']);
+        $requestModel->setKidId($newKidId);
         //On Creation Mode, each request is marked as IN Progress for Status field
         $requestModel->setStatusReq("en cours");
-    
-        //continue with other setter
 
         //Persist into DB this new Nursery Request
         $newId = $requestModel->createNurseryRequest();
-        $http->redirectTo('user/nursery/requestEdit?id='.$newId."&statusCreation=ok");
+
+        $http->redirectTo('user/nursery/requestEdit?id='.$newId."&statusAction=created");
         
 	}
 }

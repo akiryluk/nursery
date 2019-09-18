@@ -62,15 +62,10 @@ class NurseryRequestModel
             $nurseryRequest->setReferenceNumber($row['reference_number']);
             $nurseryRequest->setRequestDate($row['request_date']);
             $nurseryRequest->setEntryDate($row['entry_date']);
-            $kidIdAsStr = $row['kid_id'];
-            if(!empty($kidIdAsStr)){
-                $nurseryRequest->setKidId((int)$row['kid_id']);
-            }
+            $nurseryRequest->setKidId((int)$row['kid_id']);
             $nurseryRequest->setCafNumber($row['caf_number']);
             $nurseryRequest->setStatusReq($row['status_req']);
-            if(!empty($row['file_id'])){
-                $nurseryRequest->setFileId((int)$row['file_id']);
-            }
+            $nurseryRequest->setFileId((int)$row['file_id']);
 
             /*j'ajoute au tableau examples la ligne example*/ 
             array_push($nurseryRequests,$nurseryRequest);
@@ -203,8 +198,6 @@ class NurseryRequestModel
      */ 
     public function setKidId(?int $kidId){
         $this->kidId = $kidId;
-
-        
     }
 
     /**
@@ -257,7 +250,7 @@ class NurseryRequestModel
      */ 
     public function setFileId(?int $fileId){
         $this->fileId = $fileId;
-
-        
     }
+
+
 }

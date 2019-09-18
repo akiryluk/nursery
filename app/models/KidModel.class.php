@@ -2,7 +2,7 @@
 class KidModel 
 {
     private $id;
-    private $infoKidId;
+    private $infoKidId;//Person_id
     private $familyId;
     private $rankSibling;
     private $fileId;
@@ -14,13 +14,14 @@ class KidModel
     }
     public function createKid(){
         $db = new Database();
-        $db -> executeSql(
+        $newId = $db -> executeSql(
             "INSERT INTO kid (info_kid_id, family_id,
             rank_sibling, file_id) 
             values (?,?,?,?)", 
-            [$this->infoKid, $this->familyId,
+            [$this->infoKidId, $this->familyId,
             $this->rankSibling, $this->fileId]
         );
+        return $newId;
     }
 
     public static function readAllKid(){
@@ -45,7 +46,7 @@ class KidModel
         $singleResultSql = $db->queryOne("SELECT * FROM kid WHERE kid_id = ?", [$id]);
 
          $kid = new KidModel();
-         $kid->setInfoKidId($singleResultSql['info_kid__id']);
+         $kid->setInfoKidId($singleResultSql['info_kid_id']);
          $kid->setFamilyId($singleResultSql['family_id']);
          $kid->setRankSibling($singleResultSql['rank_sibling']);
          $kid->setFileId($singleResultSql['file_id']);
@@ -77,7 +78,7 @@ class KidModel
      * Get the value of id
      */ 
 
-    public function getId():int{
+    public function getId():?int{
         return $this->id;
     }
 
@@ -85,7 +86,7 @@ class KidModel
      * Set the value of id
      *
      */ 
-    public function setId(int $id){
+    public function setId(?int $id){
         $this->id = $id;
     }
     
@@ -93,7 +94,7 @@ class KidModel
     /**
      * Get the value of infoKidId
      */ 
-    public function getInfoKidId():int{
+    public function getInfoKidId():?int{
         return $this->infoKidId;
     }
 
@@ -101,14 +102,14 @@ class KidModel
      * Set the value of infoKidId
      *
      */ 
-    public function setInfoKidId(int $infoKidId){
+    public function setInfoKidId(?int $infoKidId){
         $this->infoKidId = $infoKidId;
     }
 
     /**
      * Get the value of familyId
      */ 
-    public function getFamilyId():int{
+    public function getFamilyId():?int{
         return $this->familyId;
     }
 
@@ -116,14 +117,14 @@ class KidModel
      * Set the value of familyId
      *
      */ 
-    public function setFamilyId(int $familyId){
+    public function setFamilyId(?int $familyId){
         $this->familyId = $familyId;
     }
 
     /**
      * Get the value of rankSibling
      */ 
-    public function getRankSibling():int{
+    public function getRankSibling():?int{
         return $this->rankSibling;
     }
 
@@ -131,14 +132,14 @@ class KidModel
      * Set the value of rankSibling
      *
      */ 
-    public function setRankSibling(int $rankSibling){
+    public function setRankSibling(?int $rankSibling){
         $this->rankSibling = $rankSibling;
     }
 
     /**
      * Get the value of fileId
      */ 
-    public function getFileId():int{
+    public function getFileId():?int{
         return $this->fileId;
     }
 
@@ -146,7 +147,7 @@ class KidModel
      * Set the value of fileId
      *
      */ 
-    public function setFileId(int $fileId){
+    public function setFileId(?int $fileId){
         $this->fileId = $fileId;
     }
 }

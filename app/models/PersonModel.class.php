@@ -13,6 +13,8 @@ class PersonModel
     private $birthPlace;
     private $email;
     private $nationality;
+    private $jobTitle;
+    private $companyName;
     private $securityNumber;
     private $accepted = 0; // 0 en cours d'étude // 1 accepté // 2 refusé
   
@@ -24,7 +26,7 @@ class PersonModel
     public function createPerson()
     {
         $db = new Database();
-        $db -> executeSql(
+        $newId=$db -> executeSql(
             "INSERT INTO person (first_name, last_name, street, 
             city, zip_code, country, birthday, birth_place, email, Phone,
             nationality, job_title, company_name, security_number) 
@@ -35,6 +37,7 @@ class PersonModel
             $this->email,$this->phone, $this->nationality, $this->jobTitle,
             $this->companyName, $this->securityNumber]
         );
+        return $newId;
     }
     public static function readAllPerson()
     {
@@ -110,21 +113,21 @@ class PersonModel
          /**
      * Get the value of id
      */ 
-    public function getId():int{
+    public function getId():?int{
         return $this->id;
     }
     /**
      * Set the value of id
      *
      */ 
-    public function setId(int $id){
+    public function setId(?int $id){
         $this->id = $id;
     }
     /**
      * Getter for FirstName
      *
      */
-    public function getFirstName():string{
+    public function getFirstName():?string{
         return $this->firstName;
     }
     /**
@@ -132,14 +135,14 @@ class PersonModel
      *
      * 
      */
-    public function setFirstName(string $firstName){
+    public function setFirstName(?string $firstName){
         $this->firstName = $firstName;
     }
     /**
      * Getter for LastName
      *
      */
-    public function getLastName():string{
+    public function getLastName():?string{
         return $this->lastName;
     }
     /**
@@ -147,14 +150,14 @@ class PersonModel
      *
      * 
      */
-    public function setLastName(string $lastName){
+    public function setLastName(?string $lastName){
         $this->lastName = $lastName;
     }
     /**
      * Getter for Street
      *
      */
-    public function getStreet():string{
+    public function getStreet():?string{
         return $this->street;
     }
     /**
@@ -162,14 +165,14 @@ class PersonModel
      *
      * 
      */
-    public function setStreet(string $street){
+    public function setStreet(?string $street){
         $this->street = $street;
     }
     /**
      * Getter for City
      *
      */
-    public function getCity():string{
+    public function getCity():?string{
         return $this->city;
     }
     /**
@@ -177,14 +180,14 @@ class PersonModel
      *
      * 
      */
-    public function setCity(string $city){
+    public function setCity(?string $city){
         $this->city = $city;
     }
     /**
      * Getter for ZipCode
      *
      */
-    public function getZipCode():string{
+    public function getZipCode():?string{
         return $this->zipCode;
     }
     /**
@@ -192,14 +195,14 @@ class PersonModel
      *
      * 
      */
-    public function setZipCode(string $zipCode){
+    public function setZipCode(?string $zipCode){
         $this->zipCode = $zipCode;
     }
     /**
      * Getter for Country
      *
      */
-    public function getCountry():string{
+    public function getCountry():?string{
         return $this->country;
     }
     /**
@@ -207,14 +210,14 @@ class PersonModel
      *
      * 
      */
-    public function setCountry(string $country){
+    public function setCountry(?string $country){
         $this->country = $country;
     }
     /**
      * Getter for Phone
      *
      */
-    public function getPhone():string{
+    public function getPhone():?string{
         return $this->phone;
     }
     /**
@@ -222,7 +225,7 @@ class PersonModel
      *
      * 
      */
-    public function setPhone(string $phone){
+    public function setPhone(?string $phone){
         $this->phone = $phone;
     }
    
@@ -230,7 +233,7 @@ class PersonModel
      * Getter for BirthDate
      *
      */
-    public function getBirthDate():date{
+    public function getBirthDate():?date{
         return $this->birthDate;
     }
     /**
@@ -238,14 +241,14 @@ class PersonModel
      *
      * 
      */
-    public function setBirthDate(date $birthDate){
+    public function setBirthDate(?date $birthDate){
         $this->birthDate = $birthDate;
     }
     /**
      * Getter for BirthPlace
      *
      */
-    public function getBirthPlace():string{
+    public function getBirthPlace():?string{
         return $this->birthPlace;
     }
     /**
@@ -253,14 +256,14 @@ class PersonModel
      *
      * 
      */
-    public function setBirthPlace(string $birthPlace){
+    public function setBirthPlace(?string $birthPlace){
         $this->birthPlace = $birthPlace;
     }
     /**
      * Getter for Email
      *
      */
-    public function getEmail():string{
+    public function getEmail():?string{
         return $this->email;
     }
     /**
@@ -268,14 +271,14 @@ class PersonModel
      *
      * 
      */
-    public function setEmail(string $email){
+    public function setEmail(?string $email){
         $this->email = $email;
     }
     /**
      * Getter for Nationality
      *
      */
-    public function getNationality():string{
+    public function getNationality():?string{
         return $this->nationality;
     }
     /**
@@ -283,14 +286,44 @@ class PersonModel
      *
      * 
      */
-    public function setNationality(string $nationality){
+    public function setNationality(?string $nationality){
         $this->nationality = $nationality;
+    }
+    /**
+     * Get the value of jobTitle
+     */ 
+    public function getJobTitle():?string{
+        return $this->jobTitle;
+    }
+
+    /**
+     * Set the value of jobTitle
+     *
+     * @return  self
+     */ 
+    public function setJobTitle(?string $jobTitle){
+        $this->jobTitle = $jobTitle;
+    }
+       /**
+     * Get the value of companyName
+     */ 
+    public function getCompanyName():?string{
+        return $this->companyName;
+    }
+
+    /**
+     * Set the value of companyName
+     *
+     * @return  self
+     */ 
+    public function setCompanyName(?string $companyName){
+        $this->companyName = $companyName;
     }
     /**
      * Getter for SecurityNumber
      *
      */
-    public function getSecurityNumber():int{
+    public function getSecurityNumber():?int{
         return $this->securityNumber;
     }
     /**
@@ -298,20 +331,21 @@ class PersonModel
      *
      * 
      */
-    public function setSecurityNumber(int $securityNumber){
+    public function setSecurityNumber(?int $securityNumber){
         $this->securityNumber = $securityNumber;
     }
     /**
      * Get the value of accepted
      */ 
-    public function getAccepted():bool{
+    public function getAccepted():?bool{
         return $this->accepted;
     }
     /**
      * Set the value of accepted
      *
      */ 
-    public function setAccepted(bool $accepted){
+    public function setAccepted(?bool $accepted){
         $this->accepted = $accepted;
     }
+
 }
