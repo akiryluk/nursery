@@ -25,7 +25,8 @@ body
     padding: 1em 5em;
 
     /* presentation */
-    font-family: 'Karla', sans-serif;
+    font-family: 'cursive', sans-serif;
+    background-color: bisque;
 }
 
 fieldset
@@ -64,8 +65,8 @@ footer .fa-heart
 
 h1
 {
-    color: #EF4036;
-    font-family: 'Oleo Script Swash Caps', cursive;
+    color: green;
+    font-family: 'Oleo Script Swash Caps';
     letter-spacing: 0.15em;
     text-align: center;
 }
@@ -86,7 +87,7 @@ h2
     margin: 1.5em 0;
 
     /* presentation */
-    color: #1E593B;
+    color: royalblue;
 }
 
 html

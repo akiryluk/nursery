@@ -31,20 +31,22 @@ if(empty($nurseryRequest) || empty($nurseryRequest->getId())){
         </legend>
         <input id="id" type="hidden" name="id" value="<?= $nurseryRequest->getId() ?>" />
         <input id="kidId" type="hidden" name="kidId" value="<?= $nurseryRequest->getKidId() ?>" />
-
+        <div class="form-group">
         <label for="firstName">Prénom :</label><br>
-        <input id="firstName" type="text" name="firstName" value="<?= $kidPerson->getFirstName() ?>"/><br>
+        <input id="firstName" class="form-control" type="text" name="firstName" value="<?= $kidPerson->getFirstName() ?>"/><br>
+        
         <label for="lastName">Nom :</label><br>
-        <input id="lastName" type="text" name="lastName" value="<?= $kidPerson->getLastName() ?>"/><br>
+        <input id="lastName" class="form-control" type="text" name="lastName" value="<?= $kidPerson->getLastName() ?>"/><br>
 
         <label for="entryDate">Date :</label><br>
-        <input id="entryDate" type="text" name="entryDate" data-required data-name="Date d'entrée"
+        <input id="entryDate" class="form-control" type="text" name="entryDate" data-required data-name="Date d'entrée"
             value="<?= $nurseryRequest->getEntryDate() ?>" />
         <br>
         <label for="cafNumber">Caf number :</label><br>
-        <input id="id" type="text" name="cafNumber" value="<?= $nurseryRequest->getCafNumber() ?>" /><br>
+        <input id="id" class="form-control" type="text" name="cafNumber" value="<?= $nurseryRequest->getCafNumber() ?>" /><br>
 
         <label for="cafNumber">Statut de la demande :</label><br>
+        </div>
         <?= $nurseryRequest->getStatusReq() ?><br>
 
         <?php if($isNew == true): ?>

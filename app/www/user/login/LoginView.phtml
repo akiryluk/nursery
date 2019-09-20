@@ -6,12 +6,13 @@
         <form action="<?= $requestUrl ?>/user/login" method="POST">
         <fieldset>
             <legend>Informations d'authentification</legend>
-                <label for="email">E-mail :</label><br>
-                <input id="email" name="email" type="text" value=""><br>
-                <label for="password">Mot de passe :</label><br>
-                <input id="password" name="password" type="password"><br>
-                <hr>
-                <button class="connection" name="submitButton" type="submit">Connexion</button>
-                <button class="cancel" name="cxlButton" type="submit">Annuler</button>
+                <div class="form-group">
+                    <label for="email">E-mail :</label><br>
+                    <input id="email" class="form-control" name="email" type="text" value=""><br>
+                    <label for="password">Mot de passe :</label><br>
+                    <input id="password" class="form-control" name="password" type="password"><br>
+                    <button class="btn btn-primary" name="submitButton" type="submit">Connexion</button>
+                    <button class="btn btn-secondary" name="cxlButton" type="submit">Annuler</button>
+                    </div>
         </fieldset>
         </form>
