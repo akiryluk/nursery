@@ -77,7 +77,6 @@ class RequestEditController extends SecuredController
 				// Récupération des informations sur nursery request.
                 NurseryRequestModel::updateNurseryRequest($formFields['id'],$formFields['id'],$today, 
                 $formFields['entryDate'],$formFields['kidId'],$formFields['cafNumber'],"en cours",null);
-
                 $http->redirectTo('user/nursery/requestEdit?id='.$formFields['id']."&statusAction=updated");
             }
         }
@@ -107,6 +106,9 @@ class RequestEditController extends SecuredController
         $requestModel->setEntryDate($formFields['entryDate']);
         $requestModel->setCafNumber($formFields['cafNumber']);
         $requestModel->setKidId($newKidId);
+        $session = new Session();
+
+        $requestModel->setUserId($session->getCurrentUserId());
         //On Creation Mode, each request is marked as IN Progress for Status field
         $requestModel->setStatusReq("en cours");
 

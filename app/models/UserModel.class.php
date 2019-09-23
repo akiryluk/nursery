@@ -96,7 +96,7 @@ class UserModel
         $users= [];
         foreach($result as $user)
         {
-            $users[]= new UserModel($user['FirstName'],$user['LastName'],$user['Email'],$user['Password'],$user['BirthDate'],$user['Address'],$user['City'],$user['ZipCode'],$user['Phone'],$user['Admin'],$user['Country'],$user['CreationTimestamp'],$user['LastLoginTimestamp'],$user['Id']);
+            $users[]= new UserModel($user['FirstName'],$user['LastName'],$user['Email'],$user['Password'],$user['BirthDate'],$user['Address'],$user['City'],$user['ZipCode'],$user['Phone'],$user['Admin'],$user['Country'],$user['CreationTimestamp'],$user['LastLoginTimestamp'],$user['user_id']);
         }
 
         return $users;
@@ -105,9 +105,9 @@ class UserModel
     public static function getUserById($id)
     {
         $db = new Database();
-        $result = $db->queryOne("SELECT * FROM user WHERE Id = ?", [$id]);
+        $result = $db->queryOne("SELECT * FROM user WHERE user_id = ?", [$id]);
         $user = new UserModel($result['LastName'],$result['FirstName'],$result['BirthDate'],$result['Address'],$result['City'],$result['ZipCode'],
-        $result['Phone'],$result['Email'],$result['Password'],$result['Country'],$result['Admin'],$result['CreationTimestamp'],$result['LastLoginTimestamp'],$result['Id']);
+        $result['Phone'],$result['Email'],$result['Password'],$result['Country'],$result['Admin'],$result['CreationTimestamp'],$result['LastLoginTimestamp'],$result['user_id']);
         return $user;
     }
 
@@ -116,7 +116,7 @@ class UserModel
     {
         $db = new Database();
         $db -> executeSql(
-            "UPDATE user SET LastLoginTimestamp = ? WHERE id = ?", 
+            "UPDATE user SET LastLoginTimestamp = ? WHERE user_id = ?", 
             [date("Y-m-d H:i:s"), $this->id]
         );
     }
@@ -130,7 +130,7 @@ class UserModel
                                 $result['City'],$result['ZipCode'],$result['Phone'],
                                 $result['Email'],$result['Password'],
                                 $result['Country'],$result['Admin'],$result['CreationTimestamp'],
-                                $result['LastLoginTimestamp'],$result['Id']);
+                                $result['LastLoginTimestamp'],$result['user_id']);
         return $user;
     }
 

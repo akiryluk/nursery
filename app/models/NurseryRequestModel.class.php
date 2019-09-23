@@ -9,6 +9,7 @@ class NurseryRequestModel
     private $cafNumber;
     private $statusReq;
     private $fileId;
+    private $userId;
 
   
     public function __construct(){
@@ -20,10 +21,10 @@ class NurseryRequestModel
         $db = new Database();
         $id = $db -> executeSql(
             "INSERT INTO nursery_request (reference_number, request_date,
-            entry_date, kid_id, caf_number, status_req, file_id) 
-            values (?,?,?,?,?,?,?)", 
+            entry_date, kid_id, caf_number, status_req, file_id, user_id) 
+            values (?,?,?,?,?,?,?,?)", 
             [$this->referenceNumber, $this->requestDate, $this->entryDate,
-            $this->kidId, $this->cafNumber, $this->statusReq, $this->fileId]
+            $this->kidId, $this->cafNumber, $this->statusReq, $this->fileId, $this->userId]
         );
         return $id;
     }
@@ -50,11 +51,10 @@ class NurseryRequestModel
         return $NurseryRequests;
     }
 
-    public static function readAllNurseryRequestByUserId($id){
+    public static function readAllNurseryRequestByUserId($user_id){
         $db = new Database();
-        //TODO AK: ADD user_id as foreign key into request_nursery table.
         // And add WHERE clause with user_id=id into the following query
-        $resultSql = $db->query("SELECT * FROM nursery_request");
+        $resultSql = $db->query("SELECT * FROM nursery_request WHERE user_id = ?", [$user_id]);
         $nurseryRequests= [];
         foreach($resultSql as $row){
             $nurseryRequest = new NurseryRequestModel();
@@ -66,6 +66,7 @@ class NurseryRequestModel
             $nurseryRequest->setCafNumber($row['caf_number']);
             $nurseryRequest->setStatusReq($row['status_req']);
             $nurseryRequest->setFileId((int)$row['file_id']);
+            $nurseryRequest->setUserId((int)$row['user_id']);
 
             /*j'ajoute au tableau examples la ligne example*/ 
             array_push($nurseryRequests,$nurseryRequest);
@@ -253,4 +254,20 @@ class NurseryRequestModel
     }
 
 
+
+    /**
+     * Get the value of UserId
+     */ 
+    public function getUserId():?int{
+        return $this->userId;
+    }
+
+    /**
+     * Set the value of UserId
+     *
+     * @return  self
+     */ 
+    public function setUserId(?int $userId){
+        $this->userId = $userId;
+    }
 }
