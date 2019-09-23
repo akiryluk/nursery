@@ -8,9 +8,9 @@ if(empty($nurseryRequest) || empty($nurseryRequest->getId())){
 ?>
 
 <?php if($isNew == true): ?>
-<h1>Créer votre demande d'inscription</h1>
+<h1> <i class="fa fa-folder fa-2x"></i>  Créer votre demande d'inscription</h1>
 <?php else: ?>
-<h1>Editer votre demande d'inscription</h1>
+<h1> <i class="fa fa-edit fa-2x"></i>  Editer votre demande d'inscription</h1>
 <?php endif; ?>
 
 
@@ -27,7 +27,7 @@ if(empty($nurseryRequest) || empty($nurseryRequest->getId())){
     <?php endif; ?>
     <fieldset>
         <legend>
-            <h2>Info de bases</h2>
+            <h2> <i class="fa fa-info fa-2x"></i>  Info de bases</h2>
         </legend>
         <input id="id" type="hidden" name="id" value="<?= $nurseryRequest->getId() ?>" />
         <input id="kidId" type="hidden" name="kidId" value="<?= $nurseryRequest->getKidId() ?>" />
@@ -44,10 +44,17 @@ if(empty($nurseryRequest) || empty($nurseryRequest->getId())){
         <br>
         <label for="cafNumber">Caf number :</label><br>
         <input id="id" class="form-control" type="text" name="cafNumber" value="<?= $nurseryRequest->getCafNumber() ?>" /><br>
-
+<?php if($userSession->isAdmin() == true): ?>
         <label for="cafNumber">Statut de la demande :</label><br>
+             <input type="radio" id="enCours" name="groupeSelect">
+             <label for="enCours">En cours</label>
+             <input type="radio" id="acceptee" name="groupeSelect">
+             <label for="acceptee">Acceptée</label><br/>
+             <input type="radio" id="refusee" name="groupeSelect">
+             <label for="refusee">Refusée</label>
         </div>
-        <?= $nurseryRequest->getStatusReq() ?><br>
+<?php endif; ?>
+       <!--<?= $nurseryRequest->getStatusReq() ?><br>-->
 
         <?php if($isNew == true): ?>
             <button class="btn btn-primary" type="submit" name="submitButton">Créer</button>

@@ -1,9 +1,26 @@
---jointure entre la table famille et person
---(le nom de mere et le nom de pere de la meme famille)
-SELECT family_id, mother_id, m.lastName, m.person_id AS mother_person_id, father_id, f.lastName, f.person_id  AS father_person_id
-FROM `family` 
-	INNER JOIN person m ON mother_id= m.person_id 
-    INNER JOIN person f ON father_id= f.person_id 
+
+CREATE TABLE `user` (
+  `user_id` BIGINT NOT NULL auto_increment,
+  `FirstName` varchar(40) NOT NULL,
+  `LastName` varchar(20) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `Password` varchar(64) NOT NULL,
+  `BirthDate` date NOT NULL,
+  `Address` varchar(250) NOT NULL,
+  `City` varchar(40) NOT NULL,
+  `ZipCode` char(5) NOT NULL,
+  `Country` varchar(20) DEFAULT NULL,
+  `Phone` char(10) NOT NULL,
+  `CreationTimestamp` datetime NOT NULL,
+  `LastLoginTimestamp` datetime DEFAULT NULL,
+  `Admin` tinyint(1) DEFAULT 0,
+  PRIMARY KEY (`user_id`) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Index pour la table `user`
+--
+ALTER TABLE `user` ADD UNIQUE KEY `Email` (`Email`);
 
 CREATE TABLE person 
              ( 
@@ -74,7 +91,8 @@ alter table kid add constraint FK_kid_file foreign key (file_id) references file
 
 CREATE TABLE nursery_request 
              ( 
-                        nursery_request_id            BIGINT NOT NULL auto_increment, 
+                        nursery_request_id            BIGINT NOT NULL auto_increment,
+                        user_id                       BIGINT,
                         reference_number              INTEGER, 
                         request_date                  DATETIME(6), 
                         entry_date                    DATE, 
@@ -88,6 +106,7 @@ CREATE TABLE nursery_request
 
 alter table nursery_request add constraint FK_nursery_request_kid foreign key (kid_id) references kid (kid_id);
 alter table nursery_request add constraint FK_nursery_request_file foreign key (file_id) references file (file_id);
+alter table nursery_request add constraint FK_nursery_request_user foreign key (user_id) references user (user_id);
 
 CREATE TABLE work_place
              ( 

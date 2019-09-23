@@ -8,7 +8,7 @@
 
 a
 {
-    color : #1E593B;
+    color : rgb(175, 22, 22);
     font-weight: bold;
     text-decoration: none;
     transition: color 0.25s;
@@ -25,20 +25,36 @@ body
     padding: 1em 5em;
 
     /* presentation */
-    font-family: 'cursive', sans-serif;
+    font-family:'El Messiri', sans-serif;
     background-color: bisque;
 }
 
+ /* ak */
+input {
+    margin-right: 300px;
+}
+.form-control{
+    padding-left: 0.5em;
+    
+}
+.form-control:hover{
+    background-color: whitesmoke; 
+}
+label {
+    font-weight: bold;
+}
+ /* ak */
+
 fieldset
 {
-    /* structure */
-    margin-bottom: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
+    /* structure ak rem pr50 pour le champ à 50% de la page*/
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 50rem;
 
     /* presentation */
-    border-color: #1E593B;
-    border-radius: 6px;
+    border-color: rgb(11, 17, 14);
+    border-radius: 5px;
 }
 fieldset legend
 {
@@ -46,7 +62,7 @@ fieldset legend
     padding: 0 0.5em;
 
     /* presentation */
-    color: #1E593B;
+    color: rgb(175, 22, 22);
     font-weight: bold;
 }
 
@@ -58,15 +74,15 @@ footer
     /* presentation */
     text-align: center;
 }
-footer .fa-heart
+footer .fa-compass /* ak */
 {
     color: #EF4036;
 }
 
 h1
 {
-    color: green;
-    font-family: 'Oleo Script Swash Caps';
+    color: rgb(175, 22, 22);
+    font-family: 'Kaushan Script', cursive, sans-serif;
     letter-spacing: 0.15em;
     text-align: center;
 }
@@ -87,7 +103,7 @@ h2
     margin: 1.5em 0;
 
     /* presentation */
-    color: royalblue;
+    color: grey;
 }
 
 html
@@ -161,7 +177,7 @@ html
 }
 .user-interface .welcome strong
 {
-    color: #EF4036;
+    color: purple;
 }
 
 
