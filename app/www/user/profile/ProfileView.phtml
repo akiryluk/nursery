@@ -28,6 +28,8 @@
             <input id="email" class="form-control" type="text" name="email" data-required data-name="E-mail" value="<?= $currentUser->getEmail() ?>"/><br>
         </div>
             <button class="btn btn-primary" type="submit" name="submitButton">Sauvegarder</button>
-            <button class="btn btn-secondary" type="reset" name="resetButton">Annuler</button>
+            <button class="btn btn-primary" type="button" value="Retour" onclick="history.go(-2)">Retour</button>
     </fieldset>    
 </form>
+
+<!--<button class="btn btn-secondary" type="reset" name="resetButton">Retour</button>-->

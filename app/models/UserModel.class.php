@@ -82,7 +82,7 @@ class UserModel
         $db = new Database();
         $db -> executeSql(
             "UPDATE user SET LastName = ?, FirstName = ?, Address = ?, City = ?, ZipCode = ?, Phone = ?,
-            Email =? WHERE id=?", 
+            Email =? WHERE user_id=?", 
             [$lastName, $firstName, $address, $city,
             $zipcode, $phone, $email, $id]
         );
