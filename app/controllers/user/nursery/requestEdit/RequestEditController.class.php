@@ -22,10 +22,17 @@ class RequestEditController extends SecuredController
 
                 //Fetch Kid information
                 $kidPerson = new PersonModel();
+                $mumPerson = new PersonModel();
+                $dadPerson = new PersonModel();
+
                 if(!empty($nurseryRequest->getKidId())){
                     $kid = KidModel::readKidById($nurseryRequest->getKidId());
                      //Fetch Person info based on kid id
                     $kidPerson = PersonModel::readPersonById($kid->getInfoKidId());
+                    $family = FamilyModel::readFamilyById($kid->getFamilyId());
+                    $mumPerson = PersonModel::readPersonById($family->getMotherId());
+                    $dadPerson = PersonModel::readPersonById($family->getFatherId());
+
                 }
                 
 
@@ -45,6 +52,8 @@ class RequestEditController extends SecuredController
                     'infoMessage' => $infoMessage,
                     'nurseryRequest'  => $nurseryRequest,
                     'kidPerson' => $kidPerson,
+                    'mumPerson' => $mumPerson,
+                    'dadPerson' => $dadPerson,
                 ];
                 
             }
@@ -53,10 +62,15 @@ class RequestEditController extends SecuredController
         //DISPLAY AN EMPTY CREATION FORM
         $nurseryRequest = new NurseryRequestModel();
         $kidPerson = new PersonModel();
+        $mumPerson = new PersonModel();
+        $dadPerson = new PersonModel();
+
         return
         [
             'errorMessage' => null,
             'nurseryRequest'  => $nurseryRequest,
+            'mumPerson' => $mumPerson,
+            'dadPerson' => $dadPerson,
             'kidPerson' => $kidPerson,
         ];
 
@@ -76,7 +90,10 @@ class RequestEditController extends SecuredController
 
 				// Récupération des informations sur nursery request.
                 NurseryRequestModel::updateNurseryRequest($formFields['id'],$formFields['id'],$today, 
-                $formFields['entryDate'],$formFields['kidId'],$formFields['cafNumber'],"en cours",null);
+                $formFields['entryDate'],$formFields['kidId'],$formFields['cafNumber'],
+                $formFields['mumFirstName'],$formFields['mumLastName'],
+                $formFields['dadFirstName'],$formFields['dadLastName'],
+                "en cours",null);
                 $http->redirectTo('user/nursery/requestEdit?id='.$formFields['id']."&statusAction=updated");
             }
         }
@@ -92,10 +109,42 @@ class RequestEditController extends SecuredController
 
         $newPersonId = $person->createPerson();
 
+        //=========================================================
+        //PERSIST FIRSTNAME, LASTNAME FIELD FOR MUMMY / PERSON
+        //=========================================================
+        $mumPerson = new PersonModel();
+        $mumPerson->setFirstName($formFields['mumFirstName']);
+        $mumPerson->setLastName($formFields['mumLastName']);
+
+        $newMumPersonId = $mumPerson->createPerson();
+
+        //=========================================================
+        //PERSIST FIRSTNAME, LASTNAME FIELD FOR DADDY / PERSON
+        //=========================================================
+        $dadPerson = new PersonModel();
+        $dadPerson->setFirstName($formFields['dadFirstName']);
+        $dadPerson->setLastName($formFields['dadLastName']);
+
+        $newDadPersonId = $dadPerson->createPerson();
+
+        //=========================================================
+        //PERSIST PARENTS FOR NEW FAMILY
+        //=========================================================
+        $familyModel = new FamilyModel();
+        $familyModel->setMotherId($newMumPersonId);
+        $familyModel->setFatherId($newDadPersonId);
+
+        $newFamilyModelId = $familyModel->createFamily();
+
+        //=========================================================
+        //PERSIST KID INFO AND LINK THIS KID AT HIS FAMILY
+        //=========================================================
         $kid = new KidModel();
         $kid->setInfoKidId($newPersonId);
+        $kid->setFamilyId($newFamilyModelId);
 
         $newKidId = $kid->createKid();
+
 
         //=========================================================
         //PERSIST FIELD FOR NURSERY REQUEST

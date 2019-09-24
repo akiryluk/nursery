@@ -10,7 +10,29 @@ if(empty($nurseryRequest) || empty($nurseryRequest->getId())){
 <?php if($isNew == true): ?>
 <h1> <i class="fa fa-folder fa-2x"></i>  Créer votre demande d'inscription</h1>
 <?php else: ?>
-<h1> <i class="fa fa-edit fa-2x"></i>  Editer votre demande d'inscription</h1>
+    <h1> <i class="fa fa-edit fa-2x"></i>  Editer votre demande d'inscription</h1>
+    <!-- Nursery Request Tabs -->
+    <ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="<?= $requestUrl ?>/user/nursery/requestEdit?id=<?= $nurseryRequest->getId() ?>">Général</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/kidTabEdit?requestId=<?= $nurseryRequest->getId() ?>">Enfant</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/mumTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Maman</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/fatherTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Papa</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/healthTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Santé</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/urgencyTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Urgence</a>
+    </li>
+    </ul>
+
 <?php endif; ?>
 
 
@@ -32,13 +54,23 @@ if(empty($nurseryRequest) || empty($nurseryRequest->getId())){
         <input id="id" type="hidden" name="id" value="<?= $nurseryRequest->getId() ?>" />
         <input id="kidId" type="hidden" name="kidId" value="<?= $nurseryRequest->getKidId() ?>" />
         <div class="form-group">
-        <label for="firstName">Prénom :</label><br>
+
+        <label for="firstName">Prénom de l'enfant:</label><br>
         <input id="firstName" class="form-control" type="text" name="firstName" value="<?= $kidPerson->getFirstName() ?>"/><br>
-        
-        <label for="lastName">Nom :</label><br>
+        <label for="lastName">Nom de l'enfant:</label><br>
         <input id="lastName" class="form-control" type="text" name="lastName" value="<?= $kidPerson->getLastName() ?>"/><br>
 
-        <label for="entryDate">Date :</label><br>
+        <label for="mumFirstName">Prénom de Maman:</label><br>
+        <input id="mumFirstName" class="form-control" type="text" name="mumFirstName" value="<?= $mumPerson->getFirstName() ?>"/><br>
+        <label for="mumLastName">Nom de Maman:</label><br>
+        <input id="mumLastName" class="form-control" type="text" name="mumLastName" value="<?= $mumPerson->getLastName() ?>"/><br>
+
+        <label for="dadFirstName">Prénom de Papa:</label><br>
+        <input id="dadFirstName" class="form-control" type="text" name="dadFirstName" value="<?= $dadPerson->getFirstName() ?>"/><br>
+        <label for="dadLastName">Nom de Papa:</label><br>
+        <input id="dadLastName" class="form-control" type="text" name="dadLastName" value="<?= $dadPerson->getLastName() ?>"/><br>
+
+        <label for="entryDate">Date d'entrée:</label><br>
         <input id="entryDate" class="form-control" type="text" name="entryDate" data-required data-name="Date d'entrée"
             value="<?= $nurseryRequest->getEntryDate() ?>" />
         <br>

@@ -30,6 +30,7 @@ class KidModel
         $kids= [];
         foreach($resultSql as $row){
             $kid = new KidModel();
+            $kid->setId($row['kid_id']);
             $kid->setInfoKidId($row['info_kid__id']);
             $kid->setFamilyId($row['family_id']);
             $kid->setRankSibling($row['rank_sibling']);
@@ -46,6 +47,7 @@ class KidModel
         $singleResultSql = $db->queryOne("SELECT * FROM kid WHERE kid_id = ?", [$id]);
 
          $kid = new KidModel();
+         $kid->setId($singleResultSql['kid_id']);
          $kid->setInfoKidId($singleResultSql['info_kid_id']);
          $kid->setFamilyId($singleResultSql['family_id']);
          $kid->setRankSibling($singleResultSql['rank_sibling']);

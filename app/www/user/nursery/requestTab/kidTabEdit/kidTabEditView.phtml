@@ -1,0 +1,55 @@
+<!-- Affichage du template lié à la vue -->
+<?php
+$isNew = false;
+
+?>
+
+<!-- Nursery Request Tabs -->
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestEdit?id=<?= $nurseryRequest->getId() ?>">Général</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="<?= $requestUrl ?>/user/nursery/requestTab/kidTabEdit?requestId=<?= $nurseryRequest->getId() ?>">Enfant</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/mumTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Maman</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/fatherTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Papa</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/healthTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Santé</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/urgencyTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Urgence</a>
+  </li>
+</ul>
+
+<form class="generic-form" action="<?= $requestUrl ?>/user/nursery/requestTab/kidTabEdit" method="POST">
+    <aside class="error-message hidden">
+        <h3><i class="fa fa-warning"></i> Il y a <span id="total-error-count">1</span> erreur(s) dans le formulaire !
+        </h3>
+        <p><?= $errorMessage ?></p>
+    </aside>
+    <?php if(!empty($infoMessage)): ?>
+    <div class="alert alert-success" role="alert">
+        <?= $infoMessage ?>
+    </div>
+    <?php endif; ?>
+    <fieldset>
+        <legend>
+            <h2> <i class="fa fa-info fa-2x"></i>  Info de bases</h2>
+        </legend>
+        <input id="id" type="hidden" name="id" value="<?= $person->getId() ?>" />
+
+        <label for="firstName">Prénom :</label><br>
+        <input id="firstName" class="form-control" type="text" name="firstName" value="<?= $person->getFirstName() ?>"/><br>
+        
+        <label for="lastName">Nom :</label><br>
+        <input id="lastName" class="form-control" type="text" name="lastName" value="<?= $person->getLastName() ?>"/><br>
+
+        <button class="btn btn-primary" type="submit" name="submitButton">Sauvegarder</button>
+        <button class="btn btn-primary" type="button" value="Retour" onclick="history.go(-2)">Retour</button>
+    </fieldset>
+</form>
