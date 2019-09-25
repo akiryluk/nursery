@@ -1,6 +1,6 @@
 <?php
 
-class KidTabEditController extends SecuredController
+class MumTabEditController extends SecuredController
 {
 
     //
@@ -20,13 +20,14 @@ class KidTabEditController extends SecuredController
 				// Récupération des informations sur nursery request.
                 $nurseryRequest = NurseryRequestModel::readNurseryRequestById($queryFields['requestId']);
 
-                //Fetch Kid information
-                $kidPerson = new PersonModel();
+                //Fetch Family information
+                $family = FamilyModel::readFamilyByNurseryRequestId($queryFields['requestId']);
 
-                if(!empty($nurseryRequest->getKidId())){
-                    $kid = KidModel::readKidById($nurseryRequest->getKidId());
+                $mum = new PersonModel();
+
+                if(!empty($family->getMotherId())){
                      //Fetch Person info based on kid id
-                    $kidPerson = PersonModel::readPersonById($kid->getInfoKidId());
+                    $mum = PersonModel::readPersonById($family->getMotherId());
                 }
                 
                 $infoMessage = null;
@@ -44,7 +45,7 @@ class KidTabEditController extends SecuredController
                     'errorMessage' => null,
                     'infoMessage' => $infoMessage,
                     'nurseryRequest'  => $nurseryRequest,
-                    'person' => $kidPerson,
+                    'person' => $mum,
                 ];
                 
             }
@@ -52,13 +53,13 @@ class KidTabEditController extends SecuredController
 
         //DISPLAY AN EMPTY CREATION FORM
         $nurseryRequest = new NurseryRequestModel();
-        $kidPerson = new PersonModel();
+        $person = new PersonModel();
 
         return
         [
             'errorMessage' => null,
             'nurseryRequest'  => $nurseryRequest,
-            'person' => $kidPerson,
+            'person' => $person,
         ];
 
     }
@@ -74,12 +75,8 @@ class KidTabEditController extends SecuredController
             {
                 // Récupération des informations sur nursery request.
                 //TODO AK l'ordre du update kidModel + créér view form
-                PersonModel::updatePerson($formFields['id'], $formFields['firstName'],$formFields['lastName'],
-                $formFields['street'],$formFields['city'],$formFields['zipCode'],
-                $formFields['country'],$formFields['birthday'],$formFields['birthPlace'],
-                $formFields['email'],$formFields['phone'],$formFields['nationality'],
-                $formFields['jobTitle'],$formFields['companyName'],$formFields['securityNumber'], );
-                $http->redirectTo('user/nursery/requestTab/kidTabEdit?requestId='.$formFields['requestId']."&statusAction=updated");
+                PersonModel::updatePerson($formFields['id']);
+                $http->redirectTo('user/nursery/requestTab/mumTabEdit?requestId='.$formFields['requestId']."&statusAction=updated");
             }
         }
 

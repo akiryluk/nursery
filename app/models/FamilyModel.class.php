@@ -63,6 +63,24 @@ class FamilyModel
         return $family;
     }
 
+    public static function readFamilyByNurseryRequestId($nurseryRequestId){
+        $db = new Database();
+        $singleResultSql = $db->queryOne("SELECT *
+        FROM family f INNER JOIN kid ON kid.family_id = f.family_id
+                      INNER JOIN nursery_request nr ON nr.kid_id = kid.kid_id
+        WHERE nr.nursery_request_id = ?", [$nurseryRequestId]);
+
+        $family = new FamilyModel();
+        $family->setMotherId($singleResultSql['mother_id']);
+        $family->setFatherId($singleResultSql['father_id']);
+        $family->setEmergencyOneId($singleResultSql['emergency_one_id']);
+        $family->setEmergencyTwoId($singleResultSql['emergency_two_id']);
+        $family->setGuideOneId($singleResultSql['guide_one_id']);
+        $family->setGuideTwoId($singleResultSql['guide_two_id']);
+
+        return $family;
+    }
+
     public static function updateFamily($anId, $aMotherId, $aFatherId, $aEmergencyOneId, $aEmergencyTwoId, $aGuideOneId, $aGuideTwoId) {
         $db = new Database();
         $db -> executeSql(

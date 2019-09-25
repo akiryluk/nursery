@@ -94,17 +94,15 @@ class PersonModel
         $db -> executeSql(
             "UPDATE person SET first_name = ?, last_name = ?, 
             street = ?, city = ?, zip_code = ?, country = ?,
-            birtday = ?, birth_place = ?, email = ?, phone = ?,
-            nationality = ?, job_title = ?, company_name = ?, security_number = ?,
+            birthday = ?, birth_place = ?, email = ?, phone = ?,
+            nationality = ?, job_title = ?, company_name = ?, security_number = ?
             WHERE person_id=?", 
             [$afirstName, $alastName, $astreet, $acity, $azipCode, $acountry, 
-            $abirthDate, $abirthPlace, $aemail, $aphone, $antionality, $ajobTitle, 
+            $abirthDate, $abirthPlace, $aemail, $aphone, $anationality, $ajobTitle, 
             $acompanyName, $asecurityNumber, $anId]
         );
     }
    
-//TODO ANIA: 1. Ajouter readPersonById et upodatePerson methode  OK
-//           2.Typer les getter/setter
     //=======================================
     // GETTER/SETTER METHODS
     // CTRL + ALT + D ==> AUTO GENERATE GETTER SETTER
@@ -233,7 +231,7 @@ class PersonModel
      * Getter for BirthDate
      *
      */
-    public function getBirthDate():?date{
+    public function getBirthDate():?string{
         return $this->birthDate;
     }
     /**
@@ -241,7 +239,7 @@ class PersonModel
      *
      * 
      */
-    public function setBirthDate(?date $birthDate){
+    public function setBirthDate(?string $birthDate){
         $this->birthDate = $birthDate;
     }
     /**
