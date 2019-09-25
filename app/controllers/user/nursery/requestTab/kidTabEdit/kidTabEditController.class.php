@@ -78,7 +78,7 @@ class KidTabEditController extends SecuredController
                 $formFields['street'],$formFields['city'],$formFields['zipCode'],
                 $formFields['country'],$formFields['birthday'],$formFields['birthPlace'],
                 $formFields['email'],$formFields['phone'],$formFields['nationality'],
-                $formFields['jobTitle'],$formFields['companyName'],$formFields['securityNumber'], );
+                $formFields['jobTitle'],$formFields['companyName'],$formFields['securityNumber'] );
                 $http->redirectTo('user/nursery/requestTab/kidTabEdit?requestId='.$formFields['requestId']."&statusAction=updated");
             }
         }

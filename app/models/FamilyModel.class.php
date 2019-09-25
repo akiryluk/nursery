@@ -35,6 +35,7 @@ class FamilyModel
         $families= [];
         foreach($resultSql as $row){
             $family = new FamilyModel();
+            $family->setId($row['family_id']);
             $family->setMotherId($row['mother_id']);
             $family->setFatherId($row['father_id']);
             $family->setEmergencyOneId($row['emergency_one_id']);
@@ -53,6 +54,7 @@ class FamilyModel
         $singleResultSql = $db->queryOne("SELECT * FROM family WHERE family_id = ?", [$id]);
 
         $family = new FamilyModel();
+        $family->setId($singleResultSql['family_id']);
         $family->setMotherId($singleResultSql['mother_id']);
         $family->setFatherId($singleResultSql['father_id']);
         $family->setEmergencyOneId($singleResultSql['emergency_one_id']);
@@ -71,6 +73,7 @@ class FamilyModel
         WHERE nr.nursery_request_id = ?", [$nurseryRequestId]);
 
         $family = new FamilyModel();
+        $family->setId($singleResultSql['family_id']);
         $family->setMotherId($singleResultSql['mother_id']);
         $family->setFatherId($singleResultSql['father_id']);
         $family->setEmergencyOneId($singleResultSql['emergency_one_id']);

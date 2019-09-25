@@ -75,7 +75,11 @@ class MumTabEditController extends SecuredController
             {
                 // Récupération des informations sur nursery request.
                 //TODO AK l'ordre du update kidModel + créér view form
-                PersonModel::updatePerson($formFields['id']);
+                PersonModel::updatePerson($formFields['id'], $formFields['firstName'],$formFields['lastName'],
+                $formFields['street'],$formFields['city'],$formFields['zipCode'],
+                $formFields['country'],$formFields['birthday'],$formFields['birthPlace'],
+                $formFields['email'],$formFields['phone'],$formFields['nationality'],
+                $formFields['jobTitle'],$formFields['companyName'],$formFields['securityNumber'] );
                 $http->redirectTo('user/nursery/requestTab/mumTabEdit?requestId='.$formFields['requestId']."&statusAction=updated");
             }
         }

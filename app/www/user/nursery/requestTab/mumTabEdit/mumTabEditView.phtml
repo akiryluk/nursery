@@ -1,0 +1,92 @@
+<!-- Affichage du template lié à la vue -->
+<?php
+$isNew = false;
+
+?>
+
+<!-- Nursery Request Tabs -->
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestEdit?id=<?= $nurseryRequest->getId() ?>">Général</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/kidTabEdit?requestId=<?= $nurseryRequest->getId() ?>">Enfant</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="<?= $requestUrl ?>/user/nursery/requestTab/mumTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Maman</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/fatherTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Papa</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/healthTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Santé</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/urgencyTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Urgence</a>
+  </li>
+</ul>
+
+<form class="generic-form" action="<?= $requestUrl ?>/user/nursery/requestTab/mumTabEdit" method="POST">
+    <aside class="error-message hidden">
+        <h3><i class="fa fa-warning"></i> Il y a <span id="total-error-count">1</span> erreur(s) dans le formulaire !
+        </h3>
+        <p><?= $errorMessage ?></p>
+    </aside>
+    <?php if(!empty($infoMessage)): ?>
+    <div class="alert alert-success" role="alert">
+        <?= $infoMessage ?>
+    </div>
+    <?php endif; ?>
+    <fieldset>
+        <legend>
+            <h2> <i class="fa fa-info fa-2x"></i>  Info de bases</h2>
+        </legend>
+        <input id="id" type="hidden" name="id" value="<?= $person->getId() ?>" />
+        <input id="requestId" type="hidden" name="requestId" value="<?= $nurseryRequest->getId() ?>" />
+
+        <label for="firstName">Prénom :</label><br>
+        <input id="firstName" class="form-control" type="text" name="firstName" value="<?= $person->getFirstName() ?>"/><br>
+        
+        <label for="lastName">Nom :</label><br>
+        <input id="lastName" class="form-control" type="text" name="lastName" value="<?= $person->getLastName() ?>"/><br>
+
+        <label for="street">Rue :</label><br>
+        <input id="street" class="form-control" type="text" name="street" value="<?= $person->getStreet() ?>"/><br>
+
+        <label for="city">Ville :</label><br>
+        <input id="city" class="form-control" type="text" name="city" value="<?= $person->getCity() ?>"/><br>
+
+        <label for="zipCode">Code postal :</label><br>
+        <input id="zipCode" class="form-control" type="text" name="zipCode" value="<?= $person->getZipCode() ?>"/><br>
+
+        <label for="country">Pays :</label><br>
+        <input id="country" class="form-control" type="text" name="country" value="<?= $person->getCountry() ?>"/><br>
+
+        <label for="birthday">Date de naissance :</label><br>
+        <input id="birthday" class="form-control" type="text" name="birthday" value="<?= $person->getBirthDate() ?>"/><br>
+
+        <label for="birthPlace">Lieu de naissance :</label><br>
+        <input id="birthPlace" class="form-control" type="text" name="birthPlace" value="<?= $person->getBirthPlace() ?>"/><br>
+
+        <label for="email">Email :</label><br>
+        <input id="email" class="form-control" type="text" name="email" value="<?= $person->getEmail() ?>"/><br>
+
+        <label for="phone">Numéro de téléphone :</label><br>
+        <input id="phone" class="form-control" type="text" name="phone" value="<?= $person->getPhone() ?>"/><br>
+
+        <label for="nationality">Nationalité :</label><br>
+        <input id="nationality" class="form-control" type="text" name="nationality" value="<?= $person->getNationality() ?>"/><br>
+
+        <label for="jobTitle">Profession :</label><br>
+        <input id="jobTitle" class="form-control" type="text" name="jobTitle" value="<?= $person->getJobTitle() ?>"/><br>
+
+        <label for="companyName">Nom de la société :</label><br>
+        <input id="companyName" class="form-control" type="text" name="companyName" value="<?= $person->getCompanyName() ?>"/><br>
+
+        <label for="securityNumber">Numéro de la sécurité sociale :</label><br>
+        <input id="securityNumber" class="form-control" type="text" name="securityNumber" value="<?= $person->getSecurityNumber() ?>"/><br>
+
+        <button class="btn btn-primary" type="submit" name="submitButton">Sauvegarder</button>
+        <button class="btn btn-primary" type="button" value="Retour" onclick="history.go(-2)">Retour</button>
+    </fieldset>
+</form>
