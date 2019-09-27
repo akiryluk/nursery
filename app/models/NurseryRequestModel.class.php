@@ -100,6 +100,7 @@ class NurseryRequestModel
 
     public static function updateNurseryRequest($anId, $aReferenceNumber, $aRequestDate,
     $aEntryDate, $aKidId, $aCafNumber, $aStatusReq, $aFileId) {
+
         $db = new Database();
         $db -> executeSql(
             "UPDATE nursery_request SET reference_number = ?, request_date = ?,

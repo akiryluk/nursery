@@ -16,7 +16,7 @@ $isNew = false;
     <a class="nav-link active" href="<?= $requestUrl ?>/user/nursery/requestTab/mumTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Maman</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/fatherTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Papa</a>
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/dadTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Papa</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/healthTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Santé</a>
@@ -58,9 +58,6 @@ $isNew = false;
 
         <label for="zipCode">Code postal :</label><br>
         <input id="zipCode" class="form-control" type="text" name="zipCode" value="<?= $person->getZipCode() ?>"/><br>
-
-        <label for="country">Pays :</label><br>
-        <input id="country" class="form-control" type="text" name="country" value="<?= $person->getCountry() ?>"/><br>
 
         <label for="birthday">Date de naissance :</label><br>
         <input id="birthday" class="form-control" type="text" name="birthday" value="<?= $person->getBirthDate() ?>"/><br>

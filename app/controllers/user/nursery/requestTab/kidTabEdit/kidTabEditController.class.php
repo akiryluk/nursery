@@ -72,11 +72,11 @@ class KidTabEditController extends SecuredController
         {
             if(ctype_digit($formFields['id']) == true)
             {
-                // Récupération des informations sur nursery request.
-                //TODO AK l'ordre du update kidModel + créér view form
+                
+                $defaultCountry = empty($formFields['country'])?'France':$formFields['country'];
                 PersonModel::updatePerson($formFields['id'], $formFields['firstName'],$formFields['lastName'],
                 $formFields['street'],$formFields['city'],$formFields['zipCode'],
-                $formFields['country'],$formFields['birthday'],$formFields['birthPlace'],
+                $defaultCountry,$formFields['birthday'],$formFields['birthPlace'],
                 $formFields['email'],$formFields['phone'],$formFields['nationality'],
                 $formFields['jobTitle'],$formFields['companyName'],$formFields['securityNumber'] );
                 $http->redirectTo('user/nursery/requestTab/kidTabEdit?requestId='.$formFields['requestId']."&statusAction=updated");

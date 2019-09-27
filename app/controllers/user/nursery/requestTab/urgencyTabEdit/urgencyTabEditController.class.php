@@ -1,6 +1,6 @@
 <?php
 
-class MumTabEditController extends SecuredController
+class UrgencyTabEditController extends SecuredController
 {
 
     //
@@ -23,11 +23,11 @@ class MumTabEditController extends SecuredController
                 //Fetch Family information
                 $family = FamilyModel::readFamilyByNurseryRequestId($queryFields['requestId']);
 
-                $mum = new PersonModel();
+                $urgence = new PersonModel();
 
-                if(!empty($family->getMotherId())){
+                if(!empty($family->getEmergencyOneId())){
                      //Fetch Person info based on kid id
-                    $mum = PersonModel::readPersonById($family->getMotherId());
+                    $urgence = PersonModel::readPersonById($family->getEmergencyOneId());
                 }
                 
                 $infoMessage = null;
@@ -45,7 +45,7 @@ class MumTabEditController extends SecuredController
                     'errorMessage' => null,
                     'infoMessage' => $infoMessage,
                     'nurseryRequest'  => $nurseryRequest,
-                    'person' => $mum,
+                    'person' => $urgence,
                 ];
                 
             }
@@ -73,14 +73,13 @@ class MumTabEditController extends SecuredController
         {
             if(ctype_digit($formFields['id']) == true)
             {
-
-                $defaultCountry = empty($formFields['country'])?'France':$formFields['country'];
+               
                 PersonModel::updatePerson($formFields['id'], $formFields['firstName'],$formFields['lastName'],
                 $formFields['street'],$formFields['city'],$formFields['zipCode'],
-                $defaultCountry,$formFields['birthday'],$formFields['birthPlace'],
+                $formFields['country'],$formFields['birthday'],$formFields['birthPlace'],
                 $formFields['email'],$formFields['phone'],$formFields['nationality'],
                 $formFields['jobTitle'],$formFields['companyName'],$formFields['securityNumber'] );
-                $http->redirectTo('user/nursery/requestTab/mumTabEdit?requestId='.$formFields['requestId']."&statusAction=updated");
+                $http->redirectTo('user/nursery/requestTab/urgencyTabEdit?requestId='.$formFields['requestId']."&statusAction=updated");
             }
         }
 

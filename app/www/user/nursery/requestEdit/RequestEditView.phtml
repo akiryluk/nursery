@@ -23,7 +23,7 @@ if(empty($nurseryRequest) || empty($nurseryRequest->getId())){
         <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/mumTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Maman</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/fatherTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Papa</a>
+        <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/dadTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Papa</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/healthTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Santé</a>
@@ -53,22 +53,38 @@ if(empty($nurseryRequest) || empty($nurseryRequest->getId())){
         </legend>
         <input id="id" type="hidden" name="id" value="<?= $nurseryRequest->getId() ?>" />
         <input id="kidId" type="hidden" name="kidId" value="<?= $nurseryRequest->getKidId() ?>" />
+
+        <?php if($isNew == true): ?>
+
         <div class="form-group">
 
-        <label for="firstName">Prénom de l'enfant:</label><br>
-        <input id="firstName" class="form-control" type="text" name="firstName" value="<?= $kidPerson->getFirstName() ?>"/><br>
-        <label for="lastName">Nom de l'enfant:</label><br>
-        <input id="lastName" class="form-control" type="text" name="lastName" value="<?= $kidPerson->getLastName() ?>"/><br>
+            <label for="firstName">Prénom de l'enfant:</label><br>
+            <input id="firstName" class="form-control" type="text" name="firstName" value="<?= $kidPerson->getFirstName() ?>"/><br>
+            <label for="lastName">Nom de l'enfant:</label><br>
+            <input id="lastName" class="form-control" type="text" name="lastName" value="<?= $kidPerson->getLastName() ?>"/><br>
 
-        <label for="mumFirstName">Prénom de Maman:</label><br>
-        <input id="mumFirstName" class="form-control" type="text" name="mumFirstName" value="<?= $mumPerson->getFirstName() ?>"/><br>
-        <label for="mumLastName">Nom de Maman:</label><br>
-        <input id="mumLastName" class="form-control" type="text" name="mumLastName" value="<?= $mumPerson->getLastName() ?>"/><br>
+            <label for="mumFirstName">Prénom de Maman:</label><br>
+            <input id="mumFirstName" class="form-control" type="text" name="mumFirstName" value="<?= $mumPerson->getFirstName() ?>"/><br>
+            <label for="mumLastName">Nom de Maman:</label><br>
+            <input id="mumLastName" class="form-control" type="text" name="mumLastName" value="<?= $mumPerson->getLastName() ?>"/><br>
 
-        <label for="dadFirstName">Prénom de Papa:</label><br>
-        <input id="dadFirstName" class="form-control" type="text" name="dadFirstName" value="<?= $dadPerson->getFirstName() ?>"/><br>
-        <label for="dadLastName">Nom de Papa:</label><br>
-        <input id="dadLastName" class="form-control" type="text" name="dadLastName" value="<?= $dadPerson->getLastName() ?>"/><br>
+            <label for="dadFirstName">Prénom de Papa:</label><br>
+            <input id="dadFirstName" class="form-control" type="text" name="dadFirstName" value="<?= $dadPerson->getFirstName() ?>"/><br>
+            <label for="dadLastName">Nom de Papa:</label><br>
+            <input id="dadLastName" class="form-control" type="text" name="dadLastName" value="<?= $dadPerson->getLastName() ?>"/><br>
+        <?php else: ?>
+            <dl class="row">
+                <dt class="col-sm-3">Enfant:</dt>
+                <dd class="col-sm-9"><?= $kidPerson->getFirstName()." ".$kidPerson->getLastName() ?></dd>
+
+                <dt class="col-sm-3">Parents</dt>
+                <dd class="col-sm-9">
+                    <p>Madame <?= $mumPerson->getFirstName()." ".$mumPerson->getLastName() ?></p>
+                    <p>Monsieur <?= $dadPerson->getFirstName()." ".$dadPerson->getLastName() ?></p>
+                </dd>
+            </dl>
+            <div class="form-group">
+        <?php endif; ?>
 
         <label for="entryDate">Date d'entrée:</label><br>
         <input id="entryDate" class="form-control" type="text" name="entryDate" data-required data-name="Date d'entrée"

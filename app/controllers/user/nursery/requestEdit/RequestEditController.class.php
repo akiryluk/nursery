@@ -88,11 +88,9 @@ class RequestEditController extends SecuredController
             if(ctype_digit($formFields['id']) == true)
             {
 
-				// Récupération des informations sur nursery request.
+                // Récupération des informations sur nursery request.
                 NurseryRequestModel::updateNurseryRequest($formFields['id'],$formFields['id'],$today, 
                 $formFields['entryDate'],$formFields['kidId'],$formFields['cafNumber'],
-                $formFields['mumFirstName'],$formFields['mumLastName'],
-                $formFields['dadFirstName'],$formFields['dadLastName'],
                 "en cours",null);
                 $http->redirectTo('user/nursery/requestEdit?id='.$formFields['id']."&statusAction=updated");
             }

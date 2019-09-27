@@ -10,7 +10,7 @@ $isNew = false;
     <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestEdit?id=<?= $nurseryRequest->getId() ?>">Général</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="<?= $requestUrl ?>/user/nursery/requestTab/kidTabEdit?requestId=<?= $nurseryRequest->getId() ?>">Enfant</a>
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/kidTabEdit?requestId=<?= $nurseryRequest->getId() ?>">Enfant</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/mumTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Maman</a>
@@ -22,11 +22,11 @@ $isNew = false;
     <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/healthTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Santé</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/urgencyTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Urgence</a>
+    <a class="nav-link active" href="<?= $requestUrl ?>/user/nursery/requestTab/urgencyTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Urgence</a>
   </li>
 </ul>
 
-<form class="generic-form" action="<?= $requestUrl ?>/user/nursery/requestTab/kidTabEdit" method="POST">
+<form class="generic-form" action="<?= $requestUrl ?>/user/nursery/requestTab/urgencyTabEdit" method="POST">
     <aside class="error-message hidden">
         <h3><i class="fa fa-warning"></i> Il y a <span id="total-error-count">1</span> erreur(s) dans le formulaire !
         </h3>
@@ -39,7 +39,7 @@ $isNew = false;
     <?php endif; ?>
     <fieldset>
         <legend>
-            <h2> <i class="fa fa-info fa-2x"></i>  Info de bases</h2>
+            <h3> <i class="fa fa-info fa-2x"></i> Personne à contacter en cas d'urgence autre que les parents</h3>
         </legend>
         <input id="id" type="hidden" name="id" value="<?= $person->getId() ?>" />
         <input id="requestId" type="hidden" name="requestId" value="<?= $nurseryRequest->getId() ?>" />
@@ -59,17 +59,8 @@ $isNew = false;
         <label for="zipCode">Code postal :</label><br>
         <input id="zipCode" class="form-control" type="text" name="zipCode" value="<?= $person->getZipCode() ?>"/><br>
 
-        <label for="birthday">Date de naissance :</label><br>
-        <input id="birthday" class="form-control" type="text" name="birthday" value="<?= $person->getBirthDate() ?>"/><br>
-
-        <label for="birthPlace">Lieu de naissance :</label><br>
-        <input id="birthPlace" class="form-control" type="text" name="birthPlace" value="<?= $person->getBirthPlace() ?>"/><br>
-
-        <label for="nationality">Nationalité :</label><br>
-        <input id="nationality" class="form-control" type="text" name="nationality" value="<?= $person->getNationality() ?>"/><br>
-
-        <label for="securityNumber">Numéro de la sécurité sociale :</label><br>
-        <input id="securityNumber" class="form-control" type="text" name="securityNumber" value="<?= $person->getSecurityNumber() ?>"/><br>
+        <label for="phone">Numéro de téléphone :</label><br>
+        <input id="phone" class="form-control" type="text" name="phone" value="<?= $person->getPhone() ?>"/><br>
 
         <button class="btn btn-primary" type="submit" name="submitButton">Sauvegarder</button>
         <button class="btn btn-primary" type="button" value="Retour" onclick="history.go(-2)">Retour</button>
