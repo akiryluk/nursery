@@ -75,7 +75,7 @@ class MumTabEditController extends SecuredController
             {
 
                 $defaultCountry = empty($formFields['country'])?'France':$formFields['country'];
-                PersonModel::updatePerson($formFields['id'], $formFields['firstName'],$formFields['lastName'],
+                PersonModel::updatePerson($formFields['id'],$formFields['firstName'],$formFields['lastName'],
                 $formFields['street'],$formFields['city'],$formFields['zipCode'],
                 $defaultCountry,$formFields['birthday'],$formFields['birthPlace'],
                 $formFields['email'],$formFields['phone'],$formFields['nationality'],

@@ -84,6 +84,7 @@ class FamilyModel
         return $family;
     }
 
+    /*
     public static function updateFamily($anId, $aMotherId, $aFatherId, $aEmergencyOneId, $aEmergencyTwoId, $aGuideOneId, $aGuideTwoId) {
         $db = new Database();
         $db -> executeSql(
@@ -98,6 +99,19 @@ class FamilyModel
             $aGuideTwoId,
             $anId
             ]
+        );
+    }
+    */
+
+    public function updateFamily() {
+        $db = new Database();
+        $db -> executeSql(
+            "UPDATE family SET mother_id = ?, father_id = ?, emergency_one_id = ?, 
+            emergency_two_id = ?, guide_one_id = ?, guide_two_id = ? 
+            WHERE family_id=?", 
+            [$this->motherId, $this->fatherId,
+            $this->emergencyOneId, $this->emergencyTwoId,
+            $this->guideOneId, $this->guideTwoId,  $this->id]
         );
     }
 

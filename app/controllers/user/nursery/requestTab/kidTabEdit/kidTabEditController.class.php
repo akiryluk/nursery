@@ -77,8 +77,8 @@ class KidTabEditController extends SecuredController
                 PersonModel::updatePerson($formFields['id'], $formFields['firstName'],$formFields['lastName'],
                 $formFields['street'],$formFields['city'],$formFields['zipCode'],
                 $defaultCountry,$formFields['birthday'],$formFields['birthPlace'],
-                $formFields['email'],$formFields['phone'],$formFields['nationality'],
-                $formFields['jobTitle'],$formFields['companyName'],$formFields['securityNumber'] );
+                null,null,$formFields['nationality'],
+                null,null,$formFields['securityNumber'] );
                 $http->redirectTo('user/nursery/requestTab/kidTabEdit?requestId='.$formFields['requestId']."&statusAction=updated");
             }
         }

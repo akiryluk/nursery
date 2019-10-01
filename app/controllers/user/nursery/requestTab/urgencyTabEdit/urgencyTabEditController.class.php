@@ -85,8 +85,25 @@ class UrgencyTabEditController extends SecuredController
 
         //CREATION MODE is not supported here since we delegate Kid Creation at RequestEditController 
         //so redirect to request nursery listing if theres no Id for editing this kid Person. 
+        //=========================================================
+        //PERSIST FIRSTNAME, LASTNAME FIELD FOR EMERGENCY / PERSON
+        //=========================================================
+        $emergencyPerson = new PersonModel();
+        $emergencyPerson->setFirstName($formFields['firstName']);
+        $emergencyPerson->setLastName($formFields['lastName']);
+        $emergencyPerson->setStreet($formFields['street']);
+        $emergencyPerson->setCity($formFields['city']);
+        $emergencyPerson->setZipCode($formFields['zipCode']);
+        $emergencyPerson->setPhone($formFields['phone']);
 
-        $http->redirectTo('user/nursery/requestList');
+        $newEmergencyPersonId = $emergencyPerson->createPerson();
+// TO DO BIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIG PROBLEM urgence PERSONNE N'EST LIE a personne 
+        $familyPerson = FamilyModel::readFamilyByNurseryRequestId($formFields['requestId']);
+        
+        $familyPerson->setEmergencyOneId($newEmergencyPersonId);
+        $familyPerson->updateFamily();
+    
+        $http->redirectTo('user/nursery/requestTab/urgencyTabEdit?requestId='.$formFields['requestId']."&statusAction=created");
         
 	}
 }

@@ -3,8 +3,8 @@
 class UserModel
 {
     private $id;
-    private $lastName;
     private $firstName;
+    private $lastName;
     private $birthdate;
     private $address;
     private $city;
@@ -19,8 +19,8 @@ class UserModel
 
   
     public function __construct(
-        string $lastName, 
         string $firstName, 
+        string $lastName, 
         string $birthdate, 
         string $address, 
         string $city, 
@@ -39,8 +39,8 @@ class UserModel
         {
             $this->id = $id;
         }
-        $this->lastName = $lastName;
         $this->firstName = $firstName;
+        $this->lastName = $lastName;
         $this->birthdate = $birthdate;
         $this->address = $address;
         $this->city = $city;
@@ -81,9 +81,9 @@ class UserModel
     {
         $db = new Database();
         $db -> executeSql(
-            "UPDATE user SET LastName = ?, FirstName = ?, Address = ?, City = ?, ZipCode = ?, Phone = ?,
+            "UPDATE user SET FirstName = ?, LastName = ?, Address = ?, City = ?, ZipCode = ?, Phone = ?,
             Email =? WHERE user_id=?", 
-            [$lastName, $firstName, $address, $city,
+            [$firstName, $lastName, $address, $city,
             $zipcode, $phone, $email, $id]
         );
     }
@@ -106,7 +106,7 @@ class UserModel
     {
         $db = new Database();
         $result = $db->queryOne("SELECT * FROM user WHERE user_id = ?", [$id]);
-        $user = new UserModel($result['LastName'],$result['FirstName'],$result['BirthDate'],$result['Address'],$result['City'],$result['ZipCode'],
+        $user = new UserModel($result['FirstName'],$result['LastName'],$result['BirthDate'],$result['Address'],$result['City'],$result['ZipCode'],
         $result['Phone'],$result['Email'],$result['Password'],$result['Country'],$result['Admin'],$result['CreationTimestamp'],$result['LastLoginTimestamp'],$result['user_id']);
         return $user;
     }
@@ -125,7 +125,7 @@ class UserModel
     {
         $db = new Database();
         $result = $db->queryOne("SELECT * FROM user WHERE Email = ?", [$email]);
-        $user = new UserModel($result['LastName'],$result['FirstName'],
+        $user = new UserModel($result['FirstName'],$result['LastName'],
                                 $result['BirthDate'],$result['Address'],
                                 $result['City'],$result['ZipCode'],$result['Phone'],
                                 $result['Email'],$result['Password'],
@@ -177,9 +177,9 @@ class UserModel
     /**
      * Get the value of lastName
      */ 
-    public function getLastName()
+    public function getFirstName()
     {
-        return $this->lastName;
+        return $this->firstName;
     }
 
     /**
@@ -187,9 +187,9 @@ class UserModel
      *
      * @return  self
      */ 
-    public function setLastName($lastName)
+    public function setFirstName($firstName)
     {
-        $this->lastName = $lastName;
+        $this->firstName = $firstName;
 
         return $this;
     }
@@ -197,9 +197,9 @@ class UserModel
     /**
      * Get the value of firstName
      */ 
-    public function getFirstName()
+    public function getLastName()
     {
-        return $this->firstName;
+        return $this->lastName;
     }
 
     /**
@@ -207,9 +207,9 @@ class UserModel
      *
      * @return  self
      */ 
-    public function setFirstName($firstName)
+    public function setLastName($lastName)
     {
-        $this->firstName = $firstName;
+        $this->lastName = $lastName;
 
         return $this;
     }

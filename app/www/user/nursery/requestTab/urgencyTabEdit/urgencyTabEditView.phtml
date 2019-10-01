@@ -13,16 +13,16 @@ $isNew = false;
     <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/kidTabEdit?requestId=<?= $nurseryRequest->getId() ?>">Enfant</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/mumTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Maman</a>
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/mumTabEdit?requestId=<?= $nurseryRequest->getId() ?>">Maman</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/dadTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Papa</a>
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/dadTabEdit?requestId=<?= $nurseryRequest->getId() ?>">Papa</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/healthTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Santé</a>
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/healthTabEdit?requestId=<?= $nurseryRequest->getId() ?>">Santé</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" href="<?= $requestUrl ?>/user/nursery/requestTab/urgencyTabEdit?requestId=<?= $nurseryRequest->getId() ?>"">Urgence</a>
+    <a class="nav-link active" href="<?= $requestUrl ?>/user/nursery/requestTab/urgencyTabEdit?requestId=<?= $nurseryRequest->getId() ?>">Urgence</a>
   </li>
 </ul>
 
@@ -39,7 +39,7 @@ $isNew = false;
     <?php endif; ?>
     <fieldset>
         <legend>
-            <h3> <i class="fa fa-info fa-2x"></i> Personne à contacter en cas d'urgence autre que les parents</h3>
+        <h6> <i class="fa fa-info"></i> &nbsp; Personne à contacter en cas d'urgence autre que les parents</h6>
         </legend>
         <input id="id" type="hidden" name="id" value="<?= $person->getId() ?>" />
         <input id="requestId" type="hidden" name="requestId" value="<?= $nurseryRequest->getId() ?>" />

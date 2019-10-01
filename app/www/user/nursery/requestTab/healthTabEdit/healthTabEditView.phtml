@@ -1,0 +1,106 @@
+<!-- Affichage du template lié à la vue -->
+<?php
+$isNew = false;
+
+?>
+
+<!-- Nursery Request Tabs -->
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestEdit?id=<?= $nurseryRequest->getId() ?>">Général</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/kidTabEdit?requestId=<?= $nurseryRequest->getId() ?>">Enfant</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/mumTabEdit?requestId=<?= $nurseryRequest->getId() ?>">Maman</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/dadTabEdit?requestId=<?= $nurseryRequest->getId() ?>">Papa</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="<?= $requestUrl ?>/user/nursery/requestTab/healthTabEdit?requestId=<?= $nurseryRequest->getId() ?>">Santé</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="<?= $requestUrl ?>/user/nursery/requestTab/urgencyTabEdit?requestId=<?= $nurseryRequest->getId() ?>">Urgence</a>
+  </li>
+</ul>
+
+<form class="generic-form" action="<?= $requestUrl ?>/user/nursery/requestTab/healthTabEdit" method="POST">
+    <aside class="error-message hidden">
+        <h3><i class="fa fa-warning"></i> Il y a <span id="total-error-count">1</span> erreur(s) dans le formulaire !
+        </h3>
+        <p><?= $errorMessage ?></p>
+    </aside>
+    <?php if(!empty($infoMessage)): ?>
+    <div class="alert alert-success" role="alert">
+        <?= $infoMessage ?>
+    </div>
+    <?php endif; ?>
+    <fieldset>
+        <legend>
+            <h2> <i class="fa fa-info fa-2x"></i>  Info de bases</h2>
+        </legend>
+        <input id="id" type="hidden" name="id" value="<?= $health->getId() ?>" />
+        <input id="requestId" type="hidden" name="requestId" value="<?= $nurseryRequest->getId() ?>" />
+
+        <label for="isBornOnTime">Né à terme ?:</label><br>
+        <input id="isBornOnTime" class="form-control" type="checkbox" name="isBornOnTime" value="<?= $health->getIsBornOnTime() ?>"/><br>
+
+        <label for="isBirthHealthIssue">Antécédents médicaux ?:</label><br>
+        <input id="isBirthHealthIssue" class="form-control" type="checkbox" name="isBirthHealthIssue" value="<?= $health->getIsBirthHealthIssues() ?>"/><br>
+
+        <label for="isAllergy">Allergies ?:</label><br>
+        <input id="isAllergy" class="form-control" type="checkbox" name="isAllergy" value="<?= $health->getIsAllergy() ?>"/><br>
+
+        <label for="allergyDetail">Details d'allergie :</label><br>
+        <input id="allergyDetail" class="form-control" type="textarea" name="allergyDetail" value="<?= $health->getAllergyDetail() ?>"/><br>
+
+        <label for="isDiet">Régime alimentaire particulier ?:</label><br>
+        <input id="isDiet" class="form-control" type="checkbox" name="isDiet" value="<?= $health->getIsDiet() ?>"/><br>
+
+        <label for="dietDetail">Details de régime :</label><br>
+        <input id="dietDetail" class="form-control" type="checkbox" name="dietDetail" value="<?= $health->getDietDetail() ?>"/><br>
+
+        <label for="isLoseConsciousness">Perte de connaissance ?:</label><br>
+        <input id="isLoseConsciousness" class="form-control" type="checkbox" name="isLoseConsciousness" value="<?= $health->getIsLoseConsciousness() ?>"/><br>
+
+        <label for="loseDetail">Détails :</label><br>
+        <input id="loseDetail" class="form-control" type="checkbox" name="loseDetail" value="<?= $health->getLoseDetail() ?>"/><br>
+
+        <label for="isConvulsions">A-t-il eu des convulsions ? :</label><br>
+        <input id="isConvulsions" class="form-control" type="checkbox" name="isConvulsions" value="<?= $health->getIsConvulsions() ?>"/><br>
+
+        <label for="isBleedingNose">Saigne-t-il du nez ?:</label><br>
+        <input id="isBleedingNose" class="form-control" type="checkbox" name="isBleedingNose" value="<?= $health->getIsBleedingNose() ?>"/><br>
+
+        <label for="isSpecialMedecine">Traitement régulier ?:</label><br>
+        <input id="isSpecialMedecine" class="form-control" type="checkbox" name="isSpecialMedecine" value="<?= $health->getIsSpecialMedecine() ?>"/><br>
+
+        <label for="medecineDetail">Détails de traitement :</label><br>
+        <input id="medecineDetail" class="form-control" type="checkbox" name="medecineDetail" value="<?= $health->getMedecineDetail() ?>"/><br>
+
+        <label for="isFeverMedecine">En cas de fièvre peut-il prendre du doliprane ?:</label><br>
+        <input id="isFeverMedecine" class="form-control" type="checkbox" name="isFeverMedecine" value="<?= $health->getIsFeverMedecine() ?>"/><br>
+
+        <label for="weight">Poids de l'enfant :</label><br>
+        <input id="weight" class="form-control" type="checkbox" name="weight" value="<?= $health->getWeight() ?>"/><br>
+
+        <label for="isHospitalEmergency">En cas d'hospitalisation j'autorise la Halte-Jeux à conduire mon enfant à l'hôpital en cas d'urgence ?:</label><br>
+        <input id="isHospitalEmergency" class="form-control" type="radio" name="isHospitalEmergency" value="<?= $health->getIsHospitalEmergency() ?>"/><br>
+
+             <input type="radio" id="oui" name="oui">
+             <label for="oui">Oui</label>
+             <input type="radio" id="non" name="non">
+             <label for="non">Non</label><br/>
+           
+
+        <label for="hospitalName">Hôpital de votre choix :</label><br>
+        <input id="hospitalName" class="form-control" type="text" name="hospitalName" value="<?= $health->getHospitalName() ?>"/><br>
+
+       <!-- créatedAt crée un problème sur mon Model... ligne 146-->
+
+        <button class="btn btn-primary" type="submit" name="submitButton">Sauvegarder</button>
+        <button class="btn btn-primary" type="button" value="Retour" onclick="history.go(-2)">Retour</button>
+    </fieldset>
+</form>
