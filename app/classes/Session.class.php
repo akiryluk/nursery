@@ -50,7 +50,15 @@ class Session{
         }
         return "";
     }
-    
+
+    public function getFirstName()
+    {
+        if(array_key_exists ('firstName', $_SESSION) == true)
+        {
+            return ($_SESSION['firstName']);
+        }
+        return "";
+    }
 
     public function isAdmin()
     {
