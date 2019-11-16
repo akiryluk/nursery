@@ -3,9 +3,12 @@
     <tbody>
 
         <h2>Connection avec un compte d'utilisateur</h2>
+
+        OU <a class="btn btn-primary" href="<?= $requestUrl ?>/user/signin">Créer un compte</a>
         <form action="<?= $requestUrl ?>/user/login" method="POST">
         <fieldset>
             <legend>Informations d'authentification</legend>
+
                 <div class="form-group">
                     <label for="email">E-mail :</label><br>
                     <input id="email" class="form-control" name="email" type="text" value=""><br>
