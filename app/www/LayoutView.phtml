@@ -11,7 +11,10 @@
     <!-- Feuilles de styles de l'application -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?= $wwwUrl ?>/css/3wa-resto.css">
+    <!--<link rel="stylesheet" href="<?= $wwwUrl ?>/css/3wa-resto.css">-->
+     <!-- Custom css -->
+    <link href="<?= $wwwUrl ?>/css/nursery.css"  id="option_style" rel="stylesheet">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=El+Messiri|Kaushan+Script&display=swap">
     <!-- Librairie jQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -32,43 +35,96 @@
 
 <body>
 
-    <!-- En-tête commune -->
-    <header>
-        <h1>
-            <a href="<?= $requestUrl ?>">
-                <img src="<?= $wwwUrl ?>/images/logo.gif" height="63" width="57" alt="">La crèche "Les petits Amis"
-            </a>
-        </h1>
-    </header>
+  <!-- ====================================
+  ——— En-tête commune
+  ===================================== -->
+  <header class="header" id="pageTop">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-scrollUp navbar-sticky navbar-white">
+      <div class="container">
+        <a class="navbar-brand" href="<?= $requestUrl ?>">
+          <img class="d-inline-block" src="<?= $wwwUrl ?>/images/logo-nursery.png" alt="Crèches les p'tits amis">
+        </a>
 
-    <!-- Interface utilisateur -->
-    <nav class="user-interface">
-        <ul class="link-list">
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav ml-lg-auto">
+            <li class="nav-item dropdown bg-warning">
+              <a class="nav-link dropdown-toggle  active " href="<?= $requestUrl ?>">
+                <i class="fa fa-home nav-icon" aria-hidden="true"></i>
+                <span>Accueil</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown bg-purple">
+              <a class="nav-link dropdown-toggle " href="javascript:void(0)" id="stores"
+                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-calendar nav-icon" aria-hidden="true"></i>
+                <span>Actualités</span>
+              </a>
+            </li>
+
             <?php if($userSession->isAuthenticated() == true): ?>
-                <li>
-                    <a class="btn btn-primary" href="<?= $requestUrl ?>/user/nursery/requestList">Mes demandes</a>
-                    <a class="btn btn-primary" href="<?= $requestUrl ?>/user/nursery/requestEdit">Inscrire mon enfant</a>
-                    <?php if($userSession->isAdmin() == true): ?>
-                        <li>
-                            <a class="btn btn-primary" href="<?= $requestUrl ?>/admin">Admin</a>
-                        </li>
-                    <?php endif; ?>
-                </li>
-                <li class="layout-right">
-                <!-- show user profile(with lastName and FirstName), modify my profile -->
-                    <a href="<?= $requestUrl ?>/user/profile"><p class="welcome">Bonjour <strong><?= $userSession->getFullName() ?></strong> !</p></a>                                        
-                    <a class="btn btn-primary" href="<?= $requestUrl ?>/user/logout">Déconnexion</a>
-                </li>
-        <?php else: ?>
-                <li>
-                    <a class="btn btn-primary" href="<?= $requestUrl ?>/user/signin">Créer un compte</a>
-                </li>
-                <li class="layout-right">
-                    <a class="btn btn-primary" href="<?= $requestUrl ?>/user/login">Connexion</a>
-                </li>
+              <li class="nav-item dropdown bg-danger">
+                <a class="nav-link dropdown-toggle " href="javascript:void(0)" role="button"
+                  data-toggle="dropdown">
+                  <i class="fa fa-list-ul nav-icon" aria-hidden="true"></i>
+                  <span>Demandes</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="<?= $requestUrl ?>/user/nursery/requestEdit">Inscrire mon enfant</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="<?= $requestUrl ?>/user/nursery/requestList">Mes demandes</a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown bg-info">
+                <a class="nav-link dropdown-toggle " href="javascript:void(0)" id="stores"
+                  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-pencil-square-o nav-icon" aria-hidden="true"></i>
+                  <span>Facturation</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="stores">
+                  <li>
+                    <a class="dropdown-item " href="product-single.html">Paiement</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item " href="product-category.html">Vos factures</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown mega-dropdown bg-success">
+                <a class="nav-link dropdown-toggle " href="#" role="button"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-file-text-o nav-icon" aria-hidden="true"></i>
+                  <!-- show user profile(with lastName and FirstName), modify my profile -->
+                  <span>Bonjour <?= $userSession->getFirstName() ?></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="stores">
+                  <li>
+                    <a href="<?= $requestUrl ?>/user/profile" class="dropdown-item">Votre profil</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="<?= $requestUrl ?>/user/logout">Se déconnecter</a>
+                  </li>
+                </ul>
+              </li>
+            <?php else: ?>
+
+              <li class="nav-item dropdown mega-dropdown bg-success">
+                <a class="nav-link dropdown-toggle" href="<?= $requestUrl ?>/user/login">
+                  <i class="fa fa-file-text-o nav-icon" aria-hidden="true"></i>
+                  <span>Se connecter</span>
+                </a>
+              </li>
             <?php endif; ?>
-        </ul>
+          </ul>
+        </div>
+      </div>
     </nav>
+  </header>
+
 
     <main>
         <!-- Affichage du template lié à la vue -->
