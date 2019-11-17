@@ -38,6 +38,7 @@
   <!-- ====================================
   ——— En-tête commune
   ===================================== -->
+<div>
   <header class="header" id="pageTop">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-md navbar-scrollUp navbar-sticky navbar-white">
@@ -125,24 +126,84 @@
     </nav>
   </header>
 
+    <main id="wrapper">
+      <div id="content">
+          <!-- Affichage du template lié à la vue -->
+          <?php include $this->viewData['template'] ?>
+      </div>
+</main>
 
-    <main>
-        <!-- Affichage du template lié à la vue -->
-        <?php include $this->viewData['template'] ?>
-    </main>
     <!-- Pied de page commun -->
-    <footer>
-        <ul class="link-list">
-        
-            <li><a href="https://github.com/akiryluk/nursery/"><i class="fa fa-github-square fa-3x"></i></a></li>
-            <li><a href="https://linkedin.com/in/anna-maria-kiryluk/"><i class="fa fa-linkedin fa-3x"></i></a></li>
-            <li><a href="https://facebook.com/ania.kiryluk.7/"><i class="fa fa-facebook-square fa-3x"></i></a></li>
-           
-        </ul>
-        <small>Réalisé avec <i class="fa fa-compass fa-2x"></i> par Ania</small><br>
-        <a href="#">Haut de page</a>
-    </footer>
+    <!--
+    <footer id="footer">
+          <ul class="link-list">
+              <small>Suivez-nous sur</small>
+              <li><a href="https://github.com/akiryluk/nursery/"><i class="fa fa-github-square fa-2x"></i></a></li>
+              <li><a href="https://linkedin.com/in/anna-maria-kiryluk/"><i class="fa fa-linkedin fa-2x"></i></a></li>
+              <li><a href="https://facebook.com/ania.kiryluk.7/"><i class="fa fa-facebook-square fa-2x"></i></a></li>
+          </ul>
 
+          <small>Réalisé avec <i class="fa fa-compass fa-2x"></i> par Ania</small>
+    </footer>
+-->
+    <footer class="footer-bg-img">
+  <!-- Footer Color Bar -->
+  <div class="color-bar">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col color-bar bg-warning"></div>
+        <div class="col color-bar bg-danger"></div>
+        <div class="col color-bar bg-success"></div>
+        <div class="col color-bar bg-info"></div>
+        <div class="col color-bar bg-purple"></div>
+        <div class="col color-bar bg-pink"></div>
+        <div class="col color-bar bg-warning d-none d-md-block"></div>
+        <div class="col color-bar bg-danger d-none d-md-block"></div>
+        <div class="col color-bar bg-success d-none d-md-block"></div>
+        <div class="col color-bar bg-info d-none d-md-block"></div>
+        <div class="col color-bar bg-purple d-none d-md-block"></div>
+        <div class="col color-bar bg-pink d-none d-md-block"></div>
+      </div>
+    </div>
+  </div>
+  <!-- Copy Right -->
+  <div class="copyright">
+    <div class="container">
+      <div class="row py-4 align-items-center">
+        <div class="col-sm-7 col-xs-12 order-1 order-md-0">
+          <p class="copyright-text"> Réalisé avec <i class="fa fa-heart fa-2x"></i> par <a href="https://linkedin.com/in/anna-maria-kiryluk/" target="_blank">Anna Kiryluk.</a></p>
+        </div>
+
+        <div class="col-sm-5 col-xs-12">
+          <ul class="list-inline d-flex align-items-center justify-content-md-end justify-content-center mb-md-0">
+            <li class="mr-3">
+              <a class="icon-rounded-circle-small bg-danger" href="https://github.com/akiryluk/nursery/">
+                <i class="fa fa-github text-white" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li class="mr-3">
+              <a class="icon-rounded-circle-small bg-success" href="https://linkedin.com/in/anna-maria-kiryluk/">
+                <i class="fa fa-linkedin text-white" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li class="mr-3">
+              <a class="icon-rounded-circle-small bg-warning" href="https://facebook.com/ania.kiryluk.7/">
+                <i class="fa fa-facebook text-white" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <div class="scrolling">
+      <a href="#pageTop" class="back-to-top" id="back-to-top" style="opacity: 1;">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+      </a>
+    </div>
     <!-- Code principal JavaScript de l'application -->
     <script src="<?= $wwwUrl ?>/js/main.js"></script>
 
