@@ -1,34 +1,65 @@
-<!-- Affichage du template lié à la vue -->
-<h1>Formulaire d'inscription</h1>
 
-<form class="generic-form" action="<?= $requestUrl ?>/user/signin" method="POST">
-    <aside class="error-message hidden">
-        <h3><i class="fa fa-warning"></i> Il y a <span id="total-error-count">1</span> erreur(s) dans le formulaire !</h3>
-        <p><?= $errorMessage ?></p>
-    </aside>
-    
-    <fieldset>
-        <legend>
-            <h2>Coordonnées personelles</h2>
-        </legend>
-        <div class="form-group">
-        <label for="firstName">Prénom :</label><br>
-            <input id="firstName" class="form-control" type="text" name="firstName" data-required data-name="Prénom" value="<?= $firstName ?>"/><br>
-            <label for="lastName">Nom :</label><br>
-            <input id="lastName" class="form-control" type="text" name="lastName" data-required data-name="Nom" value="<?= $lastName ?>"/><br>
-            <label for="address">Adresse :</label><br>
-            <input name="address" class="form-control" id="address"/><br>
-            <label for="city">Ville :</label><br>
-            <input name="city" class="form-control" id="city"/><br>
-            <label for="zipCode">Code Postal :</label><br>
-            <input id="zipCode" class="form-control" name="zipCode" type="text" maxlength="5"/><br>
-            <label for="phone">Téléphone :</label><br>
-            <input id="phone" class="form-control" name="phone" type="text" maxlength="10" data-type="number"/><br>
-            <label for="email">E-mail :</label><br>
-            <input id="email" class="form-control" type="text" name="email" data-required data-name="E-mail" value="<?= $email ?>"/><br>
-            <label for="password">Mot de passe :</label><br>
-            <input id="password" class="form-control" type="password" name="password" data-required data-name="Mot de passe" value="<?= $password ?>"/><br>
+<section class="py-8 py-md-10">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 offset-lg-2 col-lg-6">
+        <div class="mb-4 mb-sm-0">
+          <div class="bg-warning rounded-top p-2">
+            <h3 class="text-white font-weight-bold mb-0 ml-2">Créer un compte</h3>
+          </div>
+
+          <div class="border rounded-bottom-sm border-top-0">
+            <div class="p-3">
+              <form action="<?= $requestUrl ?>/user/signin" method="POST" role="form">
+                <aside class="error-message hidden">
+                    <p><i class="fa fa-warning"></i> Il y a <span id="total-error-count">1</span> erreur(s) dans le formulaire !</p>
+                    <p><?= $errorMessage ?></p>
+                </aside>
+
+                <div class="form-group form-group-icon">
+                  <input id="firstName" name="firstName" type="text" class="form-control border" placeholder="Prénom" data-required data-name="Prénom" value="<?= $firstName ?>">
+                </div>
+
+                <div class="form-group form-group-icon">
+                  <input id="lastName" name="lastName" type="text" class="form-control border" placeholder="Nom" data-required data-name="Nom" value="<?= $lastName ?>">
+                </div>
+
+                <div class="form-group form-group-icon">
+                  <input id="email" name="email" type="text" class="form-control border" placeholder="Email" data-required data-name="E-mail" value="<?= $email ?>">
+                </div>
+
+                <div class="form-group form-group-icon">
+                  <input id="password" name="password" type="password" class="form-control border" placeholder="Password" data-required data-name="Mot de passe" value="<?= $password ?>">
+                </div>
+
+                <div class="form-group form-group-icon">
+                  <input id="address" name="address" type="text" class="form-control border" placeholder="Adresse">
+                </div>
+
+                <div class="form-group form-group-icon">
+                  <input id="city" name="city" type="text" class="form-control border" placeholder="Ville">
+                </div>
+
+                <div class="form-group form-group-icon">
+                  <input id="zipCode" name="zipCode" type="text" class="form-control border" placeholder="Code Postal" maxlength="5">
+                </div>
+
+                <div class="form-group form-group-icon">
+                  <input id="phone" name="phone" type="text" class="form-control border" placeholder="Téléphone" maxlength="10" data-type="number">
+                </div>
+
+                <div class="form-group">
+                  <button type="submit" class="btn btn-danger text-uppercase w-100">S'enregistrer</button>
+                </div>
+
+                <div class="form-group text-center text-secondary mb-0">
+                  <p class="mb-0">Déjà un compte? <a class="text-danger" href="<?= $requestUrl ?>/user/login">Se connecter</a></p>
+                </div>
+              </form>
             </div>
-            <button class="btn btn-primary" type="submit" name="submitButton">S'enregistrer</button>
-    </fieldset>    
-</form>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+</section>
