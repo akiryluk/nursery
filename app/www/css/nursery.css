@@ -16867,8 +16867,8 @@ html[dir="rtl"] .team-slider .card .card-img-wrapper .card-img-overlay .list-uns
 
 /** CUSTOM SECTION**/
 main{
-  margin: 7rem 6rem;
-  height: 100%;
+  margin: 7rem 0rem;
+  min-height: 800px;
 }
 
 #content {
@@ -16894,3 +16894,51 @@ main{
     margin-right: 0.5em;
 }
 
+/** HOME SECTION**/
+/* Home Background */
+.home-bg {
+  background-size: cover;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+}
+
+.home-bg .home-holder {
+  height: 500px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+}
+
+/* Home Element */
+.home-element {
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  height: 250px;
+}
+
+.home-element h1 {
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+}
+
+.home-element p {
+  color: #fff;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+/* Home Title */
+.home-title {
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  font-size: 2.5rem;
+  font-family: "Dosis", sans-serif;
+}
+/** END HOME SECTION**/
