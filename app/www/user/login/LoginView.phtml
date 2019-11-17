@@ -1,21 +1,33 @@
-<!-- Affichage du template lié à la vue -->
-<table class="generic-table meal-list">
-    <tbody>
 
-        <h2>Connection avec un compte d'utilisateur</h2>
 
-        OU <a class="btn btn-primary" href="<?= $requestUrl ?>/user/signin">Créer un compte</a>
-        <form action="<?= $requestUrl ?>/user/login" method="POST">
-        <fieldset>
-            <legend>Informations d'authentification</legend>
+<section class="py-8 py-md-10">
+  <div class="container">
+    <div class="row">
+    <div class="col-sm-6 offset-lg-3 col-lg-6">
+        <div class="mb-4 mb-sm-0">
+          <div class="bg-warning rounded-top p-2">
+            <h3 class="text-white font-weight-bold mb-0 ml-2">S'identifier</h3>
+          </div>
+  
+          <div class="border rounded-bottom-sm border-top-0">
+            <div class="p-3">
+              <form action="<?= $requestUrl ?>/user/login" method="POST">
+                <div class="form-group form-group-icon">
+                  <input id="email" name="email" type="text" class="form-control border" placeholder="Email">
+                </div>
+
+                <div class="form-group form-group-icon">
+                  <input id="password" name="password" type="password" class="form-control border" placeholder="Mot de passe">
+                </div>
 
                 <div class="form-group">
-                    <label for="email">E-mail :</label><br>
-                    <input id="email" class="form-control" name="email" type="text" value=""><br>
-                    <label for="password">Mot de passe :</label><br>
-                    <input id="password" class="form-control" name="password" type="password"><br>
-                    <button class="btn btn-primary" name="submitButton" type="submit">Connexion</button>
-                    <button class="btn btn-secondary" name="cxlButton" type="submit">Annuler</button>
-                    </div>
-        </fieldset>
-        </form>
+                  <button type="submit" class="btn btn-danger text-uppercase w-100">Se connecter</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
