@@ -1,6 +1,6 @@
 <?php
 
-class RequestEditController extends SecuredController
+class RequesteditController extends SecuredController
 {
 
     //

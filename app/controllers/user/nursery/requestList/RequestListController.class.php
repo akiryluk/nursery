@@ -1,6 +1,6 @@
 <?php
 
-class RequestListController extends SecuredController
+class RequestlistController extends SecuredController
 {
 
 
