@@ -7,11 +7,7 @@ if(empty($nurseryRequest) || empty($nurseryRequest->getId())){
 
 ?>
 
-<aside class="error-message hidden">
-    <h3><i class="fa fa-warning"></i> Il y a <span id="total-error-count">1</span> erreur(s) dans le formulaire !
-    </h3>
-    <p><?= $errorMessage ?></p>
-</aside>
+
 <?php if(!empty($infoMessage)): ?>
     <div class="alert alert-success" role="alert">
         <?= $infoMessage ?>
@@ -29,7 +25,6 @@ if(empty($nurseryRequest) || empty($nurseryRequest->getId())){
                         <h1 class="text-white font-weight-bold mb-0 ml-2">Editer votre demande d'inscription</h1>
                     <?php endif; ?>
                 </div>
-
                 <?php if($isNew == false): ?>
                     <!-- Nursery Request Tabs -->
                     <ul class="nav nav-tabs">
@@ -65,6 +60,11 @@ if(empty($nurseryRequest) || empty($nurseryRequest->getId())){
                 <div class="border rounded-bottom-sm border-top-0">
                     <div class="p-3">
                         <form class="generic-form" action="<?= $requestUrl ?>/user/nursery/requestEdit" method="POST">
+                            <aside class="error-message hidden">
+                                <h3><i class="fa fa-warning"/> Il y a des erreur(s) dans le formulaire !
+                                </h3>
+                                <p><?= $errorMessage ?></p>
+                            </aside>
                             <input id="id" type="hidden" name="id" value="<?= $nurseryRequest->getId() ?>" />
                             <input id="kidId" type="hidden" name="kidId" value="<?= $nurseryRequest->getKidId() ?>" />
 
