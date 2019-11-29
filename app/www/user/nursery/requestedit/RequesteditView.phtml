@@ -73,32 +73,32 @@ if(empty($nurseryRequest) || empty($nurseryRequest->getId())){
 
                             <div class="form-group form-group-icon">
                                 <input id="firstName" name="firstName" type="text" class="form-control border"
-                                    placeholder="Prénom de l'enfant:" data-required data-name="Prénom"
+                                    placeholder="Prénom de l'enfant" data-required data-name="Prénom de l'enfant"
                                     value="<?= $kidPerson->getFirstName() ?>" /><br>
                             </div>
                             <div class="form-group form-group-icon">
                                 <input id="lastName" name="lastName" type="text" class="form-control border"
-                                    placeholder="Nom de l'enfant:" data-required data-name="Nom"
+                                    placeholder="Nom de l'enfant" data-required data-name="Nom de l'enfant"
                                     value="<?= $kidPerson->getLastName() ?>" /><br>
                             </div>
                             <div class="form-group form-group-icon">
                                 <input id="mumFirstName" name="mumFirstName" type="text" class="form-control border"
-                                    placeholder="Prénom de Maman:" data-required data-name="mumFirstName"
+                                    placeholder="Prénom de Maman" data-required data-name="Prénom de Maman"
                                     value="<?= $mumPerson->getFirstName() ?>" /><br>
                             </div>
                             <div class="form-group form-group-icon">
                                 <input id="mumLastName" name="mumLastName" type="text" class="form-control border"
-                                    placeholder="Nom de Maman:" data-required data-name="mumLastName"
+                                    placeholder="Nom de Maman" data-required data-name="Nom de Maman"
                                     value="<?= $mumPerson->getFirstName() ?>" /><br>
                             </div>
                             <div class="form-group form-group-icon">
                                 <input id="dadFirstName" name="dadFirstName" type="text" class="form-control border"
-                                    placeholder="Prénom de Papa:" data-required data-name="dadFirstName"
+                                    placeholder="Prénom de Papa" data-required data-name="Nom de Papa"
                                     value="<?= $dadPerson->getFirstName() ?>" /><br>
                             </div>
                             <div class="form-group form-group-icon">
                                 <input id="dadLastName" name="dadLastName" type="text" class="form-control border"
-                                    placeholder="Nom de Papa:" data-required data-name="dadLastName"
+                                    placeholder="Nom de Papa" data-required data-name="Nom de Papa"
                                     value="<?= $dadPerson->getLastName() ?>" /><br>
                             </div>
 
@@ -118,12 +118,12 @@ if(empty($nurseryRequest) || empty($nurseryRequest->getId())){
 
                                 <div class="form-group form-group-icon">
                                 <input id="entryDate" name="entryDate" type="text" class="form-control border"
-                                    placeholder="Date d'entrée:" data-required data-name="entryDate"
+                                    placeholder="Date d'entrée" data-required data-name="Date d'entrée"
                                     value="<?= $nurseryRequest->getEntryDate() ?>" />
                                 </div>
                                 <div class="form-group form-group-icon">
                                 <input id="cafNumber" name="cafNumber" type="text" class="form-control border"
-                                    placeholder="Numéro de la caf:" data-required data-name="cafNumber"
+                                    placeholder="Numéro de la caf" data-required data-name="Numéro de la caf"
                                     value="<?= $nurseryRequest->getCafNumber() ?>" />
                                 </div>
                                 <?php if($userSession->isAdmin() == true): ?>
